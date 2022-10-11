@@ -1,0 +1,122 @@
+body, html {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    /*overflow: hidden;*/
+}
+
+body{
+    background-image: url("../img/back-main.jpg");
+    background-size: cover;
+}
+
+.fps {
+    font-family: "Droid Sans", sans-serif;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    border-bottom: 1px solid black;
+    border-right: 20px solid black;
+    border-left: 20px solid black;
+    padding: 4px;
+}
+
+#canvas {
+    border: 4px solid grey;
+    margin: 2px auto 5px 25px;
+    background-image: url(../img/fon2.png);
+    background-color: rgba(255,255,255,0.65);
+    background-repeat: repeat;
+    z-index: 100;
+}
+
+
+#output {
+    display: inline-block;
+    width: 200px;
+}
+
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+/*.buttons {*/
+/*    width: 230px;*/
+/*    white-space: nowrap;*/
+/*    opacity: 0.08;*/
+/*    transition: 0.35s;*/
+/*	padding: 6px;*/
+/*	margin-right: 80px;*/
+/*    border: 1px solid black*/
+/*}*/
+
+.buttons { /* это для ховер*/
+    border: 1px solid black;
+    white-space: nowrap;
+    width: 240px;
+	margin-right: 10px;
+    padding: 5px 35px 35px 35px; ;
+    opacity: 1;
+    transition: 0.35s;
+	background-color: rgba(255,255,255,0.62)
+}
+
+.squadInput {
+    width: 40px;
+}
+
+.test {
+    display: none;
+}
+
+.wrap {
+    width: 220px;
+    height: auto;
+    border: 1px solid black;
+    display: inline-block;
+    background-color: rgba(255,255,255,0.70);
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.labelrow {
+    align-items: stretch;
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 3px;
+    margin-top: 10px;
+}
+
+.labelrow > span {
+    text-align: left;
+    width: 40%;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.labelrow > input {
+    text-align: left;
+    margin-left: 5px;
+    margin-right: auto;
+}
+
+.unitscount {
+    font-size: 16px;
+    font-weight: bold;
+
+}
+
+#minimap {
+    border: 3px solid black;
+    width: 198px;
+    height: 396px;
+    bottom: 30px;
+    position: fixed;
+}
