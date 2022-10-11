@@ -6,7 +6,7 @@ export function engine(q, m, MyGame, squads, width, height, width2, height2) {
 
   function main(tFrame) {
     render(q, m, MyGame, squads, width, height, width2, height2);
-    update(tFrame);
+    update(tFrame, MyGame, squads, width, height);
 
     MyGame.stopMain = window.requestAnimationFrame( main );
   }

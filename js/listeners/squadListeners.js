@@ -1,13 +1,7 @@
-//▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Координаты клика ▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-// import { canvas } from "../main.js";
-
-// canvas.addEventListener("click", e => {
-//   output.innerText = `Координаты клика: ${e.offsetX}, ${e.offsetY}. `;
-//   console.log(`Координаты клика: ${e.offsetX}, ${e.offsetY}. `)
-// });
-
+//▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Лисенеры отряда ▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 import {canvas} from "../main.js";
-import { glueToField } from "../functions/glueToField.js";
+import { glueToField } from "../updateFuncs/glueToField.js";
+import { Squad } from "../classes/squad.js";
 
 function moveS(e) {
   let cur = MyGame.curSquadInfo;
@@ -16,17 +10,10 @@ function moveS(e) {
   cur.top = e.offsetY - MyGame.moveTop;   // для правильного местоположения
 }
 
-export class Listeners {
+export class SquadListeners {
   constructor(canvas) {
 
-    //▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Координаты клика ▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-    canvas.addEventListener("click", e => {
-      output.innerText = `Координаты клика: ${e.offsetX}, ${e.offsetY}. `;
-      console.log(`Координаты клика: ${e.offsetX}, ${e.offsetY}. `)
-    });
-
-
-    //▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Выбор текущего отряда ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+//▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Выбор текущего отряда ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
     canvas.addEventListener('click', (e) => {
       for (let squad in squads) {
         if (
@@ -40,7 +27,7 @@ export class Listeners {
     }, false);
 
 
-    //▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Выбор места для создания отряда ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+//▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Выбор места для создания отряда ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
     // Показывает в консоли на какого парня кликнули
     canvas.addEventListener("click", e => {
       MyGame.left = e.offsetX;
@@ -48,7 +35,7 @@ export class Listeners {
     });
 
 
-    //▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Перетаскивание отряда ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+//▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Перетаскивание отряда ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 
     canvas.addEventListener('mousedown', (e) => {
       // Для того чтобы отряд не дёргался после начала перемещения
@@ -74,11 +61,16 @@ export class Listeners {
       }
     }, false);
 
-
     canvas.addEventListener('mouseup', () => {
       canvas.removeEventListener('mousemove', moveS, false);
       glueToField();
     });
+
+
+//▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Кнопка удаления отряда ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+    let curSq = document.querySelector('.deletesquad');
+    curSq.addEventListener('click', () => Squad.deleteSquad(MyGame, squads));
+
 
   }
 }

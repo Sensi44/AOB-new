@@ -124,21 +124,6 @@ let x = canvas.addEventListener("click", e => {
 });
 
 
-//▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Переключение игрока ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-let switchPlayer = document.body.querySelector('.switchplayer');
-
-switchPlayer.addEventListener('click', () => {
-    if (switchPlayer.innerText === 'Игрок 1' && MyGame.curPlayer === 1) {
-        switchPlayer.innerText = 'Игрок 2';
-        MyGame.curPlayer = 2;
-    } else {
-        switchPlayer.innerText = 'Игрок 1';
-        MyGame.curPlayer = 1;
-    }
-
-    console.log(MyGame.curPlayer);
-})
-
 //▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Кнопка удаления отряда ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 
 let curSq = document.querySelector('.deletesquad');

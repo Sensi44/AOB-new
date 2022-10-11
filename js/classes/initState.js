@@ -2,7 +2,7 @@
 export let initialState = {
     name: 'AgeOfBattles',
     gameState: 1,
-    start: null,
+    start: () => {},
     fps: document.body.querySelector('.fps'),
     canStart: 0,
     countUnitId: 0,         // текущий ID .ybnjd
@@ -23,6 +23,11 @@ export let initialState = {
     }
 }
 
-//▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Классы ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+//▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Отряды ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 
-
+export let initialSquads = {
+  squad1:  {state: 0},    squad2:  {state: 0},    squad3:  {state: 0},
+  squad4:  {state: 0},    squad5:  {state: 0},    squad6:  {state: 0},
+  squad7:  {state: 0},    squad8:  {state: 0},    squad9:  {state: 0},
+  squad10: {state: 0},    squad11: {state: 0},    squad12: {state: 0},
+}
