@@ -10,6 +10,8 @@ export function createSquad(name, sizeX, sizeY, MyGame, squads) {
 
       squads[squad].left = MyGame.left - (squads[squad].width / 2) + 96;
       squads[squad].top = MyGame.top - (squads[squad].height / 2);
+      squads[squad].previosLeft = MyGame.left - (squads[squad].width / 2) + 96;
+      squads[squad].previosTop = MyGame.top - (squads[squad].height / 2);
       MyGame.left += squads[squad].width + 64;
 
       if (squads[squad].squadId === 102) {

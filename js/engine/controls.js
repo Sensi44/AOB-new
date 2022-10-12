@@ -11,3 +11,9 @@ export function startEngine() {
     MyGame.gameState = 1;
   }
 }
+
+export function changePhase() {
+  MyGame.phase = !MyGame.phase;
+  let buttonPhase = document.querySelector('.switchphase');
+  buttonPhase.innerHTML = (MyGame.phase) ? 'Game' : 'preparation';
+}

@@ -32,6 +32,6 @@ engine(q, m, MyGame, squads, width, height, width2, height2);
 // Временное ручное создание начальных отрядов
 createSquad('Victrix', 8, 5, MyGame, squads)
 addUnit(MyGame.curSquadInfo, MyGame);
-createSquad('Victrix2', 6, 4, MyGame, squads)
-addUnit(MyGame.curSquadInfo, MyGame);
+// createSquad('Victrix2', 6, 4, MyGame, squads)
+// addUnit(MyGame.curSquadInfo, MyGame);
 
