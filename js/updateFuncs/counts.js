@@ -17,11 +17,13 @@ export function unitsDeaths() {
       let count = MyGame.deadCount;
 
       for (let unit of squads[squad].units) {
-        if (unit.health === 0 && unit.dead === false) {
-          unit.dead = true;
-          MyGame.deadCount++;
-          squads[squad].deads++;
-          console.log(MyGame.deadCount, squads[squad].deads);
+        if (unit !== undefined) {
+          if (unit.health === 0 && unit.dead === false) {
+            unit.dead = true;
+            MyGame.deadCount++;
+            squads[squad].deads++;
+            console.log(MyGame.deadCount, squads[squad].deads);
+          }
         }
       }
     }

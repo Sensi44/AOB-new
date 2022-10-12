@@ -11,6 +11,7 @@ import { q, squads, MyGame } from '../main.js';
 // 5. Инфо об отряде
 // 6. Выключить инфо
 // 7. Клик по юниту
+// 8. Кнопка поворота отряда
 
 function moveS(e) {
   let cur = MyGame.curSquadInfo;
@@ -138,11 +139,13 @@ export class SquadListeners {
       for (let squad in squads) {
         if (squads[squad].state === 1) {
           for (let unit of squads[squad].units) {
-            if ( (e.offsetY >= unit.top && e.offsetY <= unit.top + 30) &&
-              (e.offsetX >= unit.left && e.offsetX <= unit.left + 30)) {
-              console.log(`Name:${unit.name}, id:${unit.id}
+            if (unit !== undefined) {
+              if ( (e.offsetY >= unit.top && e.offsetY <= unit.top + 30) &&
+                (e.offsetX >= unit.left && e.offsetX <= unit.left + 30)) {
+                console.log(`Name:${unit.name}, id:${unit.id}
                      HP:${unit.health}, left:${unit.left}, top:${unit.top}
                       row: ${unit.row + 1}, pos: ${unit.pos + 1}`)
+              }
             }
           }
         }
@@ -150,8 +153,8 @@ export class SquadListeners {
     });
 
 // 8. ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Кнопка поворота отряда ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-    let rotatesquad = document.querySelector('.rotatesquad');
-    rotatesquad.addEventListener('click', () => Squad.rotate(MyGame));
+//     let rotatesquad = document.querySelector('.rotatesquad');
+//     rotatesquad.addEventListener('click', () => Squad.rotate(MyGame, squads));
 
 
   }

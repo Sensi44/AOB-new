@@ -7,21 +7,17 @@ export function rotateSquad(MyGame, squad) {
   current.width = current.sizeX  * 32;
   current.height = current.sizeY  * 32;
 
-  let units = [].concat(MyGame.curSquadInfo.units)
-  units.length = sizeX * sizeY;
-  console.log(MyGame.curSquadInfo.units, units)
+  current.units = [].concat(MyGame.curSquadInfo.units)
+  current.units.length = sizeX * sizeY;
+  console.log(MyGame.curSquadInfo.units)
   let newArrUnits = [];
-  for (let i = 0; i < current.sizeY; i++) {
-    for (let j = 0; j < current.sizeX; j++) {
-      // let elem = tempUnits[j];
-      // console.log(tempUnits);
-      // console.log(elem);
-      // newArrUnits.push(elem);
+  console.log(current.sizeY, current.sizeX)
+  for (let i = 0; i < current.sizeY; i++) {    // siseY = 2
+    for (let j = 0; j < current.sizeX; j++) {  // siseY = 3
+      newArrUnits.push()
     }
-
-
   }
-  // current.units = newArrUnits;
+  // current.units = units;
   // console.log(current)
 
   MyGame.curSquadInfo = current;
