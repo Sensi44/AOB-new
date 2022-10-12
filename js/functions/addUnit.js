@@ -15,7 +15,6 @@ export function addUnit(squadName, MyGame) {
     }
   }
 
-
   let currentUnit = squadName.units[squadName.units.length - 1]
   currentUnit.pos  = leng % squadName.sizeX;
   currentUnit.row  = squadName.row;

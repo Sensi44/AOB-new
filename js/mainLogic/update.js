@@ -4,10 +4,17 @@ import collisions from "../updateFuncs/collisions.js";
 
 //▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Update состояний игры ▬▬▬▬▬▬▬▬▬▬▬▬▬
 export function update(tFrame, MyGame, squads, width, height) {
+
     checkSides(MyGame, squads, width, height);  // Проверка столкновений с краями карты каррент и статик
-    collisions(squads);  // Проверка столкновений у двух и более статиков
-    countUnits();     // Отрисовка кол-ва всех юнитов
+
+    if (!MyGame.phase) {
+        collisions(squads, MyGame.phase);  // Проверка столкновений у двух и более статиков
+    }
+
+    countUnits()      // Отрисовка кол-ва всех юнитов
+
     unitsDeaths();    // Проверка мёртвых, изменение счётчиков смертей
+
 }
 
 

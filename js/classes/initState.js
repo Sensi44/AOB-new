@@ -5,7 +5,8 @@ export let initialState = {
     start: () => {},
     fps: document.body.querySelector('.fps'),
     canStart: 0,
-    countUnitId: 0,         // текущий ID .ybnjd
+    phase: 0,   // фаза игры подготовка или игра(preparation / game)
+    countUnitId: 0,         // текущий ID юнитов
     squadId: 100,           // текущий ID отрядов
     left: 192,              // для авт. подбора положения создания нового отряда
     top: 192,               // для авт. подбора положения создания нового отряда

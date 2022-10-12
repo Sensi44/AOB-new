@@ -1,55 +1,4 @@
-//▬▬▬▬▬▬▬▬▬▬▬▬▬ Debounce ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-
-function debounce(fn, debounceTime) {
-  let timer;
-
-  return function(...args) {
-    clearTimeout(timer);
-    timer = setTimeout(()=> {
-      console.log(`Работает`)
-      fn.apply(this, args);
-
-    }, debounceTime)
-  }
-};
-
-//▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ throttle ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-
-function throttle (fn, throttleTime) {
-  let isThrottled = false;                 // flag true/false
-  let savedArgs;                           // текущие аргументы вызова
-  let savedThis;                           // текущий контекст вызова
-
-
-  function wrapper() {                     // функция обёртка
-
-    if (isThrottled) {                   // если флаг тру
-      savedArgs = arguments;           // сохраняем аргументы
-      savedThis = this;                // сохраняем контекст вызова
-      // console.log(`skip`)              // информируем когда пропускается итерация
-      return;                          // выходим из функции ничего не делая
-    }
-    // console.log(savedArgs, savedThis )   // для себя и понимания, в данном случае аргументы будут пусты
-    fn.apply(this, arguments);           // иначе, запускаем функцию с текущими
-                                         // контекстом и аргументами
-
-    isThrottled = true;                  // ставим флаг в тру, чтобы создать задержку
-
-    // функция выполнилась, начало задержки, за счёт флага тру и сеттаймаута
-
-    setTimeout(function() {       // запускаем разрешение на след. запуск по времени указанному в замыкании
-      isThrottled = false;             // время проходит, флаг снова фолсе, снова можно пустить один запуск
-      if (savedArgs) {
-        wrapper.apply(savedThis, savedArgs);  // планируем новый запуск враппера
-        savedArgs = savedThis = null;
-      }
-
-    }, throttleTime);
-
-  }
-
-  return wrapper;  // возвращаем обёртку
-}
+import { throttle } from "./throt-deboun.js";
 
 function collisions() {}
 collisions = throttle(checkCollisionAll, 48)
@@ -58,8 +7,7 @@ collisions = throttle(checkCollisionAll, 48)
 //▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ checkCollisionAll ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 
 // Составление пар отрядов для проверки их по функции столкновения (checkCollision)
-
-function checkCollisionAll(squads) {
+function checkCollisionAll(squads, phase) {
   // Проходимся по всем активным отрядам кроме выбранного
   for (let squad in squads) {
     if (squads[squad].state === 1) {
@@ -77,7 +25,7 @@ function checkCollisionAll(squads) {
           //     cur.left += 16;
           //     cur2.left -= 16;
           // }
-          checkCollision(cur, cur2)
+          checkCollision(cur, cur2, phase)
         }
       }
     }
@@ -86,7 +34,7 @@ function checkCollisionAll(squads) {
 
 //▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ checkCollision ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 
-function checkCollision(first, second = MyGame.curSquadInfo) {
+function checkCollision(first, second = MyGame.curSquadInfo, phase) {
   let cur = first;
   let sec = second;
   let left = sec.left;
@@ -172,7 +120,7 @@ function checkCollision(first, second = MyGame.curSquadInfo) {
   }
   // Заход снизу
   if ((bottom >= curTop && top <= curTop) && (left >= curLeft && right <= curRight)) {
-    console.log(`top`);
+    console.log(`bottom`);
     sec.top -= 16;
     cur.top += 16;
   }
@@ -199,7 +147,7 @@ function checkCollision(first, second = MyGame.curSquadInfo) {
   }
   // Заход снизу
   if ((bottom >= curTop && top <= curTop) && (left <= curLeft && right >= curRight)) {
-    console.log(`top 2`);
+    console.log(`bottom 2`);
     sec.top -= 16;
     cur.top += 16;
   }

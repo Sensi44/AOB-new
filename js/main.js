@@ -12,7 +12,7 @@ import { frameCount } from "./engine/fps.js";
 
 // Инициализация канваса поля и миникарты
 export let canvas = document.getElementById("canvas");
-let q = canvas.getContext("2d");
+export let q = canvas.getContext("2d");
 let width = canvas.width, height = canvas.height;
 let miniMap = document.getElementById("minimap");
 let m = miniMap.getContext("2d");
@@ -23,8 +23,8 @@ export let MyGame = initialState;
 export let squads = initialSquads;
 
 // Инициализация лисинеров
-new SquadListeners(canvas);
-new OtherListeners(canvas);
+new SquadListeners(canvas); // отряды
+new OtherListeners(canvas); // общее
 
 // Запуск цикла игры
 engine(q, m, MyGame, squads, width, height, width2, height2);
