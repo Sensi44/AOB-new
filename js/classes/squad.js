@@ -1,3 +1,5 @@
+import { rotateSquad } from "../functions/rotateSquad.js";
+
 export class Squad {
   units = [];
   state = 1;
@@ -26,34 +28,10 @@ export class Squad {
     this.height = 32 * this.sizeY;
   };
 
-  static rotate() {
+  static rotate(MyGame) {
     for (let squad in squads) {
       if (squads[squad] === MyGame.curSquadInfo) {
-        let sizeX = MyGame.curSquadInfo.sizeX;
-        let sizeY = MyGame.curSquadInfo.sizeY;
-        let current = squads[squad];
-        current.sizeX = sizeY;
-        current.sizeY = sizeX;
-        current.width = current.sizeX  * 32;
-        current.height = current.sizeY  * 32;
-
-        let tempUnits = MyGame.curSquadInfo.units;
-        let newArrUnits = [];
-        for (let i = 0; i < current.sizeY; i++) {
-          for (let j = 0; j < current.sizeX; j++) {
-            let elem = tempUnits[j];
-            console.log(tempUnits);
-            console.log(elem);
-            // newArrUnits.push(elem);
-          }
-
-
-        }
-        // current.units = newArrUnits;
-        // console.log(current)
-
-
-        squads[squad] = current;
+        squads[squad] = rotateSquad(MyGame, squads[squad]);
       }
     }
   }

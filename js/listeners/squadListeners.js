@@ -151,7 +151,7 @@ export class SquadListeners {
 
 // 8. ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Кнопка поворота отряда ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
     let rotatesquad = document.querySelector('.rotatesquad');
-    rotatesquad.addEventListener('click', () => Squad.rotate());
+    rotatesquad.addEventListener('click', () => Squad.rotate(MyGame));
 
 
   }
