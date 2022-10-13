@@ -8,14 +8,15 @@ export function addUnit(squadName, MyGame, name) {
 
   console.log(leng, squadName.size)
   if (leng === squadName.size) {
-  console.log('1')
   let count = 0;
   for (let unit of squadName.units) {
     ++count;
     if (unit === null) {
+      console.log('add unit')
       squadName.units[count - 1] = new Unit(`${name}`, 1, 100, MyGame.countUnitId++);
       squadName.units[count - 1].pos = (count - 1) % squadName.sizeX ;
-      let row = Math.floor(count / squadName.sizeX) - 1;
+      let row = Math.ceil(count / squadName.sizeX) - 1;
+      console.log(count, squadName.sizeX, row)
       if ( row < 0) row = 0;
       squadName.units[count - 1].row = row;
       console.log(squadName.units[count - 1].row)
@@ -38,6 +39,8 @@ export function addUnit(squadName, MyGame, name) {
 
   let currentUnit = squadName.units[leng]
   currentUnit.pos  = leng % squadName.sizeX;
+  squadName.units.length = squadName.size;
+  squadName.count = squadName.units.length
   currentUnit.row  = squadName.row;
 }
 

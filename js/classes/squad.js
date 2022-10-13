@@ -56,17 +56,19 @@ export class Squad {
           } else if (current.headFlag === 'right') {
             current.headFlag = 'top'
           }
+          let count = 0;
           for (let j = 1; j <= current.sizeY; j++) {
             for (let i = 1; i <= current.sizeX; i++) {
               let unit = current.units[i * current.sizeY - j];
               if (unit !== null && unit !== undefined) {
-                console.log(unit)
+                count++;
                 unit.pos = i - 1;
                 unit.row = j - 1;
                 newArrUnits = newArrUnits.concat(unit)
               } else {
                 newArrUnits = newArrUnits.concat(null)
               }
+              current.count = count;
             }
           }
         }
@@ -81,10 +83,12 @@ export class Squad {
           } else if (current.headFlag === 'left') {
             current.headFlag = 'top'
           }
+          let count = 0;
           for (let j = current.sizeY; j >= 1; j--) {   // 3 2 1
             for (let i = current.sizeX; i >= 1; i--) { // 2 1
               let unit = current.units[i * current.sizeY - j];
               if (unit !== null && unit !== undefined) {
+                count++;
                 unit.pos = i - current.sizeX;
                 if (unit.pos < 0) unit.pos = -unit.pos;
                 unit.row = j - current.sizeY;
@@ -93,6 +97,7 @@ export class Squad {
               } else {
                 newArrUnits = newArrUnits.concat(null)
               }
+              current.count = count;
             }
           }
         }

@@ -93,12 +93,12 @@ export function drawSquads(q, MyGame, squads) {
       q.fillRect(cur.left - 16, cur.top, 16, 16);
       q.strokeRect(cur.left - 16, cur.top, 16, 16);
       q.fillStyle = "black"
-      if (cur.units.length - cur.deads < 10) {
+      if (cur.count - cur.deads < 10) {
         q.font = "14px arial";
-        q.fillText(`${cur.units.length - cur.deads}`, cur.left - 11, cur.top + 12.5);
+        q.fillText(`${cur.count - cur.deads}`, cur.left - 11, cur.top + 12.5);
       } else {
         q.font = "11px arial";
-        q.fillText(`${cur.units.length - cur.deads}`, cur.left -13.4, cur.top + 11.6);
+        q.fillText(`${cur.count - cur.deads}`, cur.left -13.4, cur.top + 11.6);
       }
 
       // Номер бинда отряда

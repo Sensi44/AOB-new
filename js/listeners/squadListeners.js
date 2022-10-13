@@ -109,9 +109,11 @@ export class SquadListeners {
           // Добавление кликнутого юнита в инфо
           if (squads[squad].state === 1) {
             for (let unit of squads[squad].units) {
-              if ((e.offsetY >= unit.top && e.offsetY <= unit.top + 30) &&
-                (e.offsetX >= unit.left && e.offsetX <= unit.left + 30)) {
-                MyGame.curUnitInfo = unit;
+              if (unit !== null && unit !== undefined) {
+                if ((e.offsetY >= unit.top && e.offsetY <= unit.top + 30) &&
+                  (e.offsetX >= unit.left && e.offsetX <= unit.left + 30)) {
+                  MyGame.curUnitInfo = unit;
+                }
               }
             }
           }
@@ -129,6 +131,7 @@ export class SquadListeners {
 // Убирает инфо об отряде при отпускании мыши над элементом либо вне его
     canvas.addEventListener("click", e => {
       MyGame.showSquadInfo = 0;
+      MyGame.curUnitInfo = '';
     })
 
 
@@ -142,6 +145,7 @@ export class SquadListeners {
             if (unit !== null && unit !== undefined) {
               if ( (e.offsetY >= unit.top && e.offsetY <= unit.top + 30) &&
                 (e.offsetX >= unit.left && e.offsetX <= unit.left + 30)) {
+                MyGame.curUnitInfo = unit;
                 console.log(`Name:${unit.name}, id:${unit.id}
                      HP:${unit.health}, left:${unit.left}, top:${unit.top}
                       row: ${unit.row + 1}, pos: ${unit.pos + 1}`)
