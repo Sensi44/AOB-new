@@ -39,7 +39,6 @@ addUnit(MyGame.curSquadInfo, MyGame, '3');
 addUnit(MyGame.curSquadInfo, MyGame, '4');
 addUnit(MyGame.curSquadInfo, MyGame, '5');
 addUnit(MyGame.curSquadInfo, MyGame, '6');
-addUnit(MyGame.curSquadInfo, MyGame, '7');
 // addUnitAll(MyGame)
 // createSquad('Victrix2', 6, 4, MyGame, squads)
 // addUnit(MyGame.curSquadInfo, MyGame);

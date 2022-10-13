@@ -59,7 +59,7 @@ export class Squad {
           for (let j = 1; j <= current.sizeY; j++) {
             for (let i = 1; i <= current.sizeX; i++) {
               let unit = current.units[i * current.sizeY - j];
-              if (unit !== null) {
+              if (unit !== null && unit !== undefined) {
                 console.log(unit)
                 unit.pos = i - 1;
                 unit.row = j - 1;
@@ -84,7 +84,7 @@ export class Squad {
           for (let j = current.sizeY; j >= 1; j--) {   // 3 2 1
             for (let i = current.sizeX; i >= 1; i--) { // 2 1
               let unit = current.units[i * current.sizeY - j];
-              if (unit !== null) {
+              if (unit !== null && unit !== undefined) {
                 unit.pos = i - current.sizeX;
                 if (unit.pos < 0) unit.pos = -unit.pos;
                 unit.row = j - current.sizeY;
