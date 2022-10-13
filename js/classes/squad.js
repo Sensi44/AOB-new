@@ -63,8 +63,10 @@ export class Squad {
                 console.log(unit)
                 unit.pos = i - 1;
                 unit.row = j - 1;
+                newArrUnits = newArrUnits.concat(unit)
+              } else {
+                newArrUnits = newArrUnits.concat(null)
               }
-              newArrUnits = newArrUnits.concat(unit)
             }
           }
         }
@@ -88,6 +90,8 @@ export class Squad {
                 unit.row = j - current.sizeY;
                 if (unit.row < 0) unit.row = -unit.row;
                 newArrUnits = newArrUnits.concat(unit)
+              } else {
+                newArrUnits = newArrUnits.concat(null)
               }
             }
           }

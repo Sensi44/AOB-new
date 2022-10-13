@@ -31,13 +31,15 @@ new OtherListeners(canvas); // общее
 engine(q, m, MyGame, squads, width, height, width2, height2);
 
 // Временное ручное создание начальных отрядов
-createSquad('Victrix', 4, 3, MyGame, squads)
+createSquad('Victrix', 4, 2, MyGame, squads)
 addUnit(MyGame.curSquadInfo, MyGame, '0');
 addUnit(MyGame.curSquadInfo, MyGame, '1');
 addUnit(MyGame.curSquadInfo, MyGame, '2');
 addUnit(MyGame.curSquadInfo, MyGame, '3');
 addUnit(MyGame.curSquadInfo, MyGame, '4');
 addUnit(MyGame.curSquadInfo, MyGame, '5');
+addUnit(MyGame.curSquadInfo, MyGame, '6');
+addUnit(MyGame.curSquadInfo, MyGame, '7');
 // addUnitAll(MyGame)
 // createSquad('Victrix2', 6, 4, MyGame, squads)
 // addUnit(MyGame.curSquadInfo, MyGame);
