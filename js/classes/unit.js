@@ -6,6 +6,7 @@ export class Unit{
   // в зависимости от позиции в отряде итд.
   // В целом, в конструкторе, они не нужны
   constructor(name, size, health, id, sizeX, sizeY) {
+    // this.index = index;
     this.name = name;
     this.sizeX = sizeX ?? 1;
     this.sizeY = sizeY ?? 1;

@@ -6,7 +6,7 @@ export function drawUnits(q, MyGame, squads) {
   for (let squad in squads) {
     if (squads[squad].state === 1) {
       for (let unit of squads[squad].units) {
-          if (unit !== undefined) {
+          if (unit !== null && unit !== undefined) {
             unit.left = (squads[squad].left + unit.pos * 32);
             unit.top = (squads[squad].top + unit.row * 32);
 

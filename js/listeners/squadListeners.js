@@ -139,7 +139,7 @@ export class SquadListeners {
       for (let squad in squads) {
         if (squads[squad].state === 1) {
           for (let unit of squads[squad].units) {
-            if (unit !== undefined) {
+            if (unit !== null && unit !== undefined) {
               if ( (e.offsetY >= unit.top && e.offsetY <= unit.top + 30) &&
                 (e.offsetX >= unit.left && e.offsetX <= unit.left + 30)) {
                 console.log(`Name:${unit.name}, id:${unit.id}
