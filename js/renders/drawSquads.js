@@ -71,6 +71,16 @@ export function drawSquads(q, MyGame, squads) {
         q.strokeRect(cur.left - 3, cur.top + cur.height / 2 - 3, 6, 6);
       }
 
+      if (cur.headFlag === 'bot') {
+        q.strokeStyle = "rgba(255,11,11,1)"
+        q.strokeRect(cur.left + cur.width / 2 - 3, cur.top + cur.height - 2, 6, 6);
+      }
+
+      if (cur.headFlag === 'right') {
+        q.strokeStyle = "rgba(255,11,11,1)"
+        q.strokeRect(cur.left + cur.width - 3, cur.top + cur.height / 2 - 3, 6, 6);
+      }
+
       q.strokeStyle = "rgba(77,77,77,0.9)"
       q.lineWidth = 2;
 
