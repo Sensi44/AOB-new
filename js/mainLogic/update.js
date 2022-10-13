@@ -1,15 +1,17 @@
 import { countUnits, unitsDeaths } from "../updateFuncs/counts.js";
 import { checkSides } from "../updateFuncs/checkSides.js";
+import {throttle} from "../updateFuncs/throt-deboun.js";
 import collisions from "../updateFuncs/collisions.js";
-import collisions2 from "../updateFuncs/collisionsGame.js";
+
+const equalsCount = throttle(countUnits, 1200);
 
 //▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Update состояний игры ▬▬▬▬▬▬▬▬▬▬▬▬▬
 export function update(tFrame, MyGame, squads, width, height) {
 
     checkSides(MyGame, squads, width, height);  // Проверка столкновений с краями карты каррент и статик
-    collisions(squads, MyGame.phase);
-    countUnits()      // Отрисовка кол-ва всех юнитов
-    unitsDeaths();    // Проверка мёртвых, изменение счётчиков смертей
+    collisions(squads, MyGame.phase);           // Проверка столкновений между всеми отрядами
+    equalsCount()                               // Показ счётчика текущих единиц юнитов
+    unitsDeaths();                              // Проверка мёртвых, изменение счётчиков смертей
 
 }
 

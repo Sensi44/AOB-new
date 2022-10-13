@@ -1,5 +1,5 @@
-export //▬▬▬▬▬▬▬▬▬▬▬▬▬ Debounce ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-function debounce(fn, debounceTime) {
+//▬▬▬▬▬▬▬▬▬▬▬▬▬ Debounce ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+export function debounce(fn, debounceTime) {
   let timer;
 
   return function(...args) {

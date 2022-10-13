@@ -14,7 +14,8 @@ import { frameCount } from "./engine/fps.js";
 // Инициализация канваса поля и миникарты
 export let canvas = document.getElementById("canvas");
 export let q = canvas.getContext("2d");
-let width = canvas.width, height = canvas.height;
+export let width = canvas.width;
+export let height = canvas.height;
 let miniMap = document.getElementById("minimap");
 let m = miniMap.getContext("2d");
 let width2 = miniMap.width, height2 = miniMap.height;
@@ -31,15 +32,18 @@ new OtherListeners(canvas); // общее
 engine(q, m, MyGame, squads, width, height, width2, height2);
 
 // Временное ручное создание начальных отрядов
-createSquad('Victrix', 4, 2, MyGame, squads)
-addUnit(MyGame.curSquadInfo, MyGame, '0');
-addUnit(MyGame.curSquadInfo, MyGame, '1');
-addUnit(MyGame.curSquadInfo, MyGame, '2');
-addUnit(MyGame.curSquadInfo, MyGame, '3');
-addUnit(MyGame.curSquadInfo, MyGame, '4');
-addUnit(MyGame.curSquadInfo, MyGame, '5');
-addUnit(MyGame.curSquadInfo, MyGame, '6');
-// addUnitAll(MyGame)
+createSquad('reds', 10, 1, MyGame, squads, 1)
+addUnitAll(MyGame)
+createSquad('blues', 10, 1, MyGame, squads, 2)
+addUnitAll(MyGame)
+// addUnit(MyGame.curSquadInfo, MyGame, '0');
+// addUnit(MyGame.curSquadInfo, MyGame, '1');
+// addUnit(MyGame.curSquadInfo, MyGame, '2');
+// addUnit(MyGame.curSquadInfo, MyGame, '3');
+// addUnit(MyGame.curSquadInfo, MyGame, '4');
+// addUnit(MyGame.curSquadInfo, MyGame, '5');
+// addUnit(MyGame.curSquadInfo, MyGame, '6');
+
 // createSquad('Victrix2', 6, 4, MyGame, squads)
 // addUnit(MyGame.curSquadInfo, MyGame);
 

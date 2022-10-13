@@ -11,6 +11,10 @@ body{
     background-size: cover;
 }
 
+button {
+    margin: 5px;
+}
+
 .fps {
     font-family: "Droid Sans", sans-serif;
     display: inline-block;

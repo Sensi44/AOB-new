@@ -1,6 +1,8 @@
 import { addUnit } from "./functions/addUnit.js";
 import { addUnitAll } from "./functions/addUnitAll.js";
 import { deleteUnit } from "./functions/deleteUnit.js";
+import { killUnit } from "./functions/killUnit.js";
+import { hurtUnit } from "./functions/hurtUnit.js";
 import { createSquad } from "./functions/createSquad.js";
 import { startEngine, stopEngine, changePhase } from "./engine/controls.js";
 import { Squad } from "./classes/squad.js";
@@ -17,6 +19,8 @@ import {squads} from "./main.js";
 window.addUnit = addUnit;
 window.addUnitAll = addUnitAll;
 window.deleteUnit = deleteUnit;
+window.killUnit = killUnit;
+window.hurtUnit = hurtUnit;
 window.createSquad = createSquad;
 window.startEngine = startEngine;
 window.stopEngine = stopEngine;

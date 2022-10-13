@@ -1,11 +1,11 @@
 import { Squad } from "../classes/squad.js";
 
 //▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Создать отряд ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-export function createSquad(name, sizeX, sizeY, MyGame, squads) {
+export function createSquad(name, sizeX, sizeY, MyGame, squads, curPlayer) {
 
   for (let squad in squads) {
     if (squads[squad].state === 0) {
-      squads[squad] = new Squad(name, sizeX, sizeY, MyGame.squadId++, MyGame.curPlayer);
+      squads[squad] = new Squad(name, sizeX, sizeY, MyGame.squadId++, curPlayer);
       MyGame.curSquadInfo = squads[squad];
 
       squads[squad].left = MyGame.left - (squads[squad].width / 2) + 96;

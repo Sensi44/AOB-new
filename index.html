@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Age Of Battles</title>
-  <link rel="stylesheet" href="css/styles.css">
+    <meta charset="UTF-8">
+    <title>Age Of Battles</title>
+    <link rel="stylesheet" href="css/styles.css">
 
-  <script src="aob-old/Vi.js"></script><!-- Моя библиотека -->
+    <script src="aob-old/Vi.js"></script><!-- Моя библиотека -->
 </head>
 
 <body>
@@ -13,87 +13,99 @@
 
 <div class="wrapper">
 
-  <div class="buttons">
-    <div class="fps">00</div>&nbsp;
-    <button onclick="stopEngine()">стоп</button>
-    <button onclick="startEngine()">Старт</button>
-    <br><br>
-    <button type="text" class="switchplayer">Игрок 1</button>
-    <button type="text" onclick="changePhase()" class="switchphase">preparation</button>
-    <br><br>
-    <div id="output">Координаты клика</div>
-    <br><br>
-    <button onclick="createSquad('Victrix', 5, 3, MyGame, squads)">sq 5-3</button>
-    ||
-    <button onclick="createSquad('Ferrata', 4, 3, MyGame, squads)">sq 4-3</button>
-    ||
-    <button onclick="createSquad('Fretensis', 3, 6, MyGame, squads)">sq 3-6</button>
-    <br><br>
-    <button onclick="addUnit(MyGame.curSquadInfo, MyGame, 'tester')">add-unit 1</button>
-    ||
-    <button onclick="addUnit(MyGame.curSquadInfo, MyGame)">add-unit 2</button>
-    <br><br>
-    <button onclick="addUnitAll(MyGame)">Заполнить отряд</button>
-    <br><br>
-    <button type="button" class="deletesquad">Удалить отряд</button>
-    <button type="button" class="deletesquad" onclick="deleteUnit(MyGame.curSquadInfo, MyGame)">Удалить юнита</button>
-    <br><br>
+    <div class="buttons">
+        <div class="fps">00</div>&nbsp;
+        <button onclick="stopEngine()">стоп</button>
+        <button onclick="startEngine()">Старт</button>
+        <br>
+        <button type="text" class="switchplayer">Игрок 1</button>
+        <button type="text" onclick="changePhase()" class="switchphase">preparation</button>
+        <br>
+        <div id="output">Координаты клика</div>
+        <br>
+        <button onclick="createSquad('Victrix', 5, 3, MyGame, squads)">sq 5-3</button>
+        ||
+        <button onclick="createSquad('Ferrata', 4, 3, MyGame, squads)">sq 4-3</button>
+        ||
+        <button onclick="createSquad('Fretensis', 3, 6, MyGame, squads)">sq 3-6</button>
+        <br>
+        <button onclick="addUnit(MyGame.curSquadInfo, MyGame, 'tester')">add-unit 1</button>
+        ||
+        <button onclick="addUnit(MyGame.curSquadInfo, MyGame)">add-unit 2</button>
+        <br>
+        <button onclick="addUnitAll(MyGame)">Заполнить отряд</button>
+        <br>
+        <button onclick="killUnit(MyGame)">Убить юнита</button>
+        <button onclick="hurtUnit(MyGame)">Ранить юнита юнита</button>
+        <br>
+        <button type="button" class="deletesquad">Удалить отряд</button>
+        <button type="button" class="deletesquad" onclick="deleteUnit(MyGame.curSquadInfo, MyGame)">Удалить юнита
+        </button>
+        <br>
 
-    <button class="rotateleft" onclick="rotate(MyGame, squads, 'left')">Поворот влево</button>
-    <button class="rotateright" onclick="rotate(MyGame, squads, 'right')">Поворот вправо</button><br>
+        <button class="rotateleft" onclick="rotate(MyGame, squads, 'left')">Поворот влево</button>
+        <button class="rotateright" onclick="rotate(MyGame, squads, 'right')">Поворот вправо</button>
+        <br>
 
-    <div class="wrap">
+        <div class="wrap">
 
-      <label> Создать отряд<br>
-        <div class="labelrow">
-          <span>Имя отряда</span>
-          <input class="squadInput1" value="Victrix" type="text" size="8" maxlength="12" placeholder="Victrix">
+            <label> Создать отряд<br>
+                <div class="labelrow">
+                    <span>Имя отряда</span>
+                    <input class="squadInput1" value="Victrix" type="text" size="8" maxlength="12"
+                           placeholder="Victrix">
+                </div>
+                <div class="labelrow">
+                    <span>Ширина</span>
+                    <input class="squadInput2" type="number" value="4" min="2" max="8" step="1">
+                </div>
+                <div class="labelrow">
+                    <span>Высота</span>
+                    <input class="squadInput3" type="number" value="3" min="2" max="5" step="1">
+                </div>
+                <div class="labelrow">
+                    <button
+                            class="createSquad"
+                            onclick="createSquad(inputSquad1.value, +inputSquad2.value, +inputSquad3.value, MyGame, squads, MyGame.curPlayer)">
+                        Создать
+                    </button>
+                </div>
+            </label>
         </div>
-        <div class="labelrow">
-          <span>Ширина</span>
-          <input class="squadInput2" type="number" value="4" min="2" max="8" step="1">
-        </div>
-        <div class="labelrow">
-          <span>Высота</span>
-          <input class="squadInput3" type="number" value="3" min="2" max="5" step="1">
-        </div>
-        <div class="labelrow">
-          <button
-            class="createSquad"
-            onclick="createSquad(inputSquad1.value, +inputSquad2.value, +inputSquad3.value, MyGame, squads)">
-              Создать
-          </button>
-        </div>
-      </label>
+        <br><br>
+        <span>
+            <span>Юнитов</span>
+            <span class="unitsCount">00</span>
+        </span>
+
+        <span>
+            <span> Живых</span>
+            <span class="unitslive">00</span>
+        </span>
+
+        <span>
+            <span> Умерших</span>
+            <span class="deadsCount">00</span>
+        </span>
+
+        <!--        <button onclick="   MyGame.curSquadInfo.moveTop() ">move top</button> ||-->
+        <!--        <button onclick="  MyGame.curSquadInfo.moveDown() ">move bottom</button> ||-->
+        <!--        <button onclick="  MyGame.curSquadInfo.moveLeft() ">move left</button> ||-->
+        <!--        <button onclick=" MyGame.curSquadInfo.moveRight() ">move right</button>-->
+        <br>
+
+        <canvas id="minimap" width="198.3" height="396"></canvas>
+
     </div>
-    <br><br>
-    <div>
-      <span>Всего юнитов на поле - </span>
-      <span class="unitsCount">00</span>
-    </div>
-    <div>
-      <span>Всего умерших - </span>
-      <span class="deadsCount">00</span>
-    </div>
 
-    <!--        <button onclick="   MyGame.curSquadInfo.moveTop() ">move top</button> ||-->
-    <!--        <button onclick="  MyGame.curSquadInfo.moveDown() ">move bottom</button> ||-->
-    <!--        <button onclick="  MyGame.curSquadInfo.moveLeft() ">move left</button> ||-->
-    <!--        <button onclick=" MyGame.curSquadInfo.moveRight() ">move right</button>-->
-    <br>
-
-    <canvas id="minimap" width="198.3" height="396"></canvas>
-
-  </div>
-
-  <canvas id="canvas" width="1408" height="2816"></canvas>
+    <canvas id="canvas" width="1408" height="2816"></canvas>
 
 
 </div>
 
 
-  <script src=js/main.js type="module"></script>
-  <script src=js/init.js type="module"></script>
+<script src=js/main.js type="module"></script>
+<script src=js/init.js type="module"></script>
 </body>
 </html>
 

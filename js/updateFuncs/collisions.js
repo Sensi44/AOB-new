@@ -1,4 +1,5 @@
 import { throttle } from "./throt-deboun.js";
+import { width } from "../main.js";
 
 function collisions() {}
 collisions = throttle(checkCollisionAll, 96)

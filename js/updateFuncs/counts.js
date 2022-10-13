@@ -1,12 +1,24 @@
-import { MyGame, squads } from "../main.js";
+import {MyGame, squads} from "../main.js";
 
 //▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Вывод общего числа юнитов ▬▬▬▬▬▬▬▬▬
 
 let count = document.querySelector('.unitsCount');
+let countLive = document.querySelector('.unitslive');
 let deads = document.querySelector('.deadsCount');
 
 export function countUnits() {
-  count.innerText = MyGame.countUnitId;
+  let countUnits = 0;
+  for (let squad in squads) {
+    if (squads[squad].state === 1) {
+      for (let unit of squads[squad].units) {
+        if (unit?.name) {
+          countUnits++;
+        }
+      }
+    }
+  }
+  count.innerText = countUnits;
+  countLive.innerText = countUnits - MyGame.deadCount;
 }
 
 

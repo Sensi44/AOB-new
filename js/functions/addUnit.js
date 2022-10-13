@@ -6,7 +6,6 @@ export function addUnit(squadName, MyGame, name) {
     if (unit !== undefined) leng++;
   }
 
-  console.log(leng, squadName.size)
   if (leng === squadName.size) {
   let count = 0;
   for (let unit of squadName.units) {
