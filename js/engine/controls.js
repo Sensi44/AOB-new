@@ -14,6 +14,7 @@ export function startEngine() {
 
 export function changePhase() {
   MyGame.phase = !MyGame.phase;
+  MyGame.fight = !MyGame.fight;
   let buttonPhase = document.querySelector('.switchphase');
   buttonPhase.innerHTML = (MyGame.phase) ? 'Game' : 'preparation';
 }

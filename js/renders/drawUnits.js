@@ -16,7 +16,7 @@ export function drawUnits(q, MyGame, squads) {
             }
 
             q.strokeRect(unit.left,unit.top, 32, 32);
-            if (unit.health === 0) {
+            if (unit.health <= 0) {
               q.fillStyle = "Red"
               q.fillRect(unit.left + 1.4, unit.top + 1.4, 29.2, 29.2);
               q.fillRect(unit.left + 6, unit.top + 6, 20, 20);

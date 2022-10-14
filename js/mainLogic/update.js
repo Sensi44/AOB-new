@@ -10,11 +10,10 @@ const equalsCount = throttle(countUnits, 1200);
 export function update(tFrame, MyGame, squads, width, height) {
 
     checkSides(MyGame, squads, width, height);  // Проверка столкновений с краями карты каррент и статик
-    collisions(squads, MyGame.phase);           // Проверка столкновений между всеми отрядами
+    (!MyGame.fight) ? collisions(squads, MyGame.phase) : null;           // Проверка столкновений между всеми отрядами
     equalsCount()                               // Показ счётчика текущих единиц юнитов
     unitsDeaths();                              // Проверка мёртвых, изменение счётчиков смертей
-    MyGame.phase === 1 ? fight() : null;
-    fight(squads, MyGame.phase);
+    (MyGame.phase) ? fight(MyGame, squads) : null;
 }
 
 
