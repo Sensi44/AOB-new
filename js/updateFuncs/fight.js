@@ -17,7 +17,7 @@ function pairsOfSquads(MyGame, squads) {
             && squads[sq].player !== squads[squad].player
           ) {
             let second = squads[sq];
-            pairOfSquadParts(first, second)
+            checkingCollisionConditions(first, second)
           }
         }
       }
@@ -25,7 +25,7 @@ function pairsOfSquads(MyGame, squads) {
 }
 
 // Условия столкновения выбранных пар отрядов
-function pairOfSquadParts(current, second) {
+function checkingCollisionConditions(current, second) {
   let currentLeft = current.left;
   let currentTop = current.top;
   let currentRight = current.left + current.width;
@@ -39,15 +39,14 @@ function pairOfSquadParts(current, second) {
   if (currentTop === secondBottom) {
     MyGame.fight = true;
     console.log('бой')
-    pairsOfUnits(current, second)
+    getPairsOfUnits(current, second)
   }
 }
 
 
 // определяем подотряды и способ их столкновения
-function pairsOfUnits(current, second) {
+function getPairsOfUnits(current, second) {
   let leftBorder = null;
-  let rightBorder = null;
   let leftSquad = null;
   let rightSquad = null;
   let diffStart = current.left - second.left;
@@ -63,60 +62,56 @@ function pairsOfUnits(current, second) {
   }
 
   if (diffEnd > 0) {
-    rightBorder = current.left + current.width
     rightSquad = second.left + second.width + 16;
   } else {
-    // diffEnd = -diffEnd;
     rightSquad = current.left + current.width + 16;
   }
 
-  // Счётчик пар
+  // Счётчик пар (сколько будет столкновений, даже если один из юнитов undefined/null пара есть
+  // просто с предыдущим из вражеского отряда второй раз типа два на одного
   let countOfPairs = (rightSquad - leftSquad) / 32;
 
   // Определение пар на основе подотрядов
   let startCurrentPos = (leftBorder - current.left + diffStart) / 32;
   if (startCurrentPos < 0 ) startCurrentPos = -startCurrentPos;
-
   let endCurrentPos =  Math.trunc(startCurrentPos + ((rightSquad - leftSquad) / 32));
   if (endCurrentPos < 0 ) endCurrentPos = -endCurrentPos;
-
   let startSecondPos = (leftBorder - second.left + diffStart) / 32;
   if (startSecondPos < 0 ) startSecondPos = -startSecondPos;
-
   let endSecondPos = Math.trunc(startSecondPos + ((rightSquad - leftSquad) / 32));
   if (endSecondPos < 0 ) endSecondPos = -endSecondPos;
 
 
+  // Определение исходных сопоставляемых отрядов
   let curUnits = current.units.slice(startCurrentPos, endCurrentPos);
-  let secUnits = second.units.slice(startSecondPos, endSecondPos);
-  // console.log(startSecondPos, endSecondPos)
-  console.log(curUnits, secUnits)
+  // если отряд имеет больше одной строки
+  let tempSecUnits = second.units.slice(second.sizeX * second.row);
+  let secUnits = tempSecUnits.slice(startSecondPos, endSecondPos);
 
+  console.log(curUnits, secUnits)
+  // console.log(startSecondPos, endSecondPos)
   // console.log(`diffs`, diffStart, diffEnd);
-  // console.log('left', leftBorder, 'right', rightBorder, 'leftPart',leftSquad, 'rightPart', rightSquad)
+  // console.log('left', leftBorder, 'leftPart',leftSquad, 'rightPart', rightSquad)
   // console.log('количество пар -', countOfPairs)
 
+  // весь дальнейший код необходимо вынести в следующую функцию, описывающую бой для каждой пары.
   for (let i = 0; i < countOfPairs; i++) {
     console.log([curUnits[i]?.name, secUnits[i]?.name])
-
-    if ((curUnits[i] !== undefined) && (secUnits[i] !== undefined) ) {
-      curUnits[i].health -= 10
-      secUnits[i].health -= 10
+    if ((curUnits[i]) && (secUnits[i]) ) {
+      curUnits[i].health -= (hit(secUnits[i].hitChance))
+        ? secUnits[i].attack - curUnits[i].defense : null;
+      secUnits[i].health -= (hit(curUnits[i].hitChance))
+        ? curUnits[i].attack - secUnits[i].defense : null;
     };
 
-    // if (curUnits[i] === undefined) {
-    //   curUnits[i - 1].health -= 10
-    // }
-    //
-    // if (secUnits[i] === undefined) {
-    //   secUnits[i - 1].health -= 10
-    // }
-
+    // Функция рандома
+    function hit(unitHitChance) {
+      return Math.random() < unitHitChance/100;
+    }
 
     if (curUnits[i]?.health < 0) curUnits[i].health = 0;
     if (secUnits[i]?.health < 0) secUnits[i].health = 0;
   }
-
 
 }
 

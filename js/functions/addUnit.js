@@ -1,6 +1,7 @@
 import { Unit } from "../classes/unit.js";
 
-export function addUnit(squadName, MyGame, name) {
+
+export function addUnit(squadName, MyGame, unitType) {
   let leng = 0;
   for (let unit of squadName.units) {
     if (unit !== undefined) leng++;
@@ -12,7 +13,7 @@ export function addUnit(squadName, MyGame, name) {
     ++count;
     if (unit === null) {
       console.log('add unit')
-      squadName.units[count - 1] = new Unit(`${name}`, 1, 100, MyGame.countUnitId++);
+      squadName.units[count - 1] = new Unit(unitType, MyGame.countUnitId++, MyGame.curSquadInfo.name);
       squadName.units[count - 1].pos = (count - 1) % squadName.sizeX ;
       let row = Math.ceil(count / squadName.sizeX) - 1;
       console.log(count, squadName.sizeX, row)
@@ -28,7 +29,7 @@ export function addUnit(squadName, MyGame, name) {
 
   squadName.units.splice(
     leng, 1,
-    new Unit(`${name}`, 1, 100, MyGame.countUnitId++));
+    new Unit(unitType, MyGame.countUnitId++, MyGame.curSquadInfo.name));
 
   for (let i = 0; i < 20; i++) {
     if (leng === squadName.sizeX * i) {

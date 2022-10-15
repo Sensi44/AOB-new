@@ -7,7 +7,7 @@ import { addUnitAll } from "./functions/AddUnitAll.js";
 import { SquadListeners } from "./listeners/squadListeners.js";
 import { OtherListeners } from "./listeners/otherListeners.js";
 import { frameCount } from "./engine/fps.js";
-
+import { hoplite, eliteHoplite} from "./classes/Greek_infantry.js";
 
 //▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Основной модуль игры ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 
@@ -32,18 +32,27 @@ new OtherListeners(canvas); // общее
 engine(q, m, MyGame, squads, width, height, width2, height2);
 
 // Временное ручное создание начальных отрядов
-createSquad('reds', 5, 1, MyGame, squads, 1)
-addUnit(MyGame.curSquadInfo, MyGame, '1 - red');
-addUnit(MyGame.curSquadInfo, MyGame, '2 - red');
-addUnit(MyGame.curSquadInfo, MyGame, '3 - red');
-addUnit(MyGame.curSquadInfo, MyGame, '4 - red');
-addUnit(MyGame.curSquadInfo, MyGame, '5 - red');
+createSquad('reds', 5, 2, MyGame, squads, 1)
+addUnit(MyGame.curSquadInfo, MyGame, hoplite);
+addUnit(MyGame.curSquadInfo, MyGame, hoplite);
+addUnit(MyGame.curSquadInfo, MyGame, hoplite);
+addUnit(MyGame.curSquadInfo, MyGame, hoplite);
+addUnit(MyGame.curSquadInfo, MyGame, hoplite);
+addUnit(MyGame.curSquadInfo, MyGame, hoplite);
+addUnit(MyGame.curSquadInfo, MyGame, hoplite);
+addUnit(MyGame.curSquadInfo, MyGame, hoplite);
+addUnit(MyGame.curSquadInfo, MyGame, hoplite);
+addUnit(MyGame.curSquadInfo, MyGame, hoplite);
 // addUnit(MyGame.curSquadInfo, MyGame, '6 - red');
-createSquad('blues', 4, 1, MyGame, squads, 2)
-addUnit(MyGame.curSquadInfo, MyGame, '1 - blue');
-addUnit(MyGame.curSquadInfo, MyGame, '2 - blue');
-addUnit(MyGame.curSquadInfo, MyGame, '3 - blue');
-addUnit(MyGame.curSquadInfo, MyGame, '4 - blue');
+createSquad('blues', 4, 2, MyGame, squads, 2)
+addUnit(MyGame.curSquadInfo, MyGame, eliteHoplite);
+addUnit(MyGame.curSquadInfo, MyGame, eliteHoplite);
+addUnit(MyGame.curSquadInfo, MyGame, eliteHoplite);
+addUnit(MyGame.curSquadInfo, MyGame, eliteHoplite);
+addUnit(MyGame.curSquadInfo, MyGame, eliteHoplite);
+addUnit(MyGame.curSquadInfo, MyGame, eliteHoplite);
+addUnit(MyGame.curSquadInfo, MyGame, eliteHoplite);
+addUnit(MyGame.curSquadInfo, MyGame, eliteHoplite);
 // addUnit(MyGame.curSquadInfo, MyGame, '5 - blue');
 // addUnit(MyGame.curSquadInfo, MyGame, '6 - blue');
 
