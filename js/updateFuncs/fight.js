@@ -4,9 +4,7 @@ import { MyGame, squads } from "../main.js";
 function fight() {}
 fight = throttle(pairsOfSquads, 1000)
 
-
 //▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Fight ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-
 // Составление пар отрядов для проверки их по функции столкновения (checkCollision)
 function pairsOfSquads(MyGame, squads) {
   for (let squad in squads) {
@@ -26,6 +24,7 @@ function pairsOfSquads(MyGame, squads) {
   }
 }
 
+// Условия столкновения выбранных пар отрядов
 function pairOfSquadParts(current, second) {
   let currentLeft = current.left;
   let currentTop = current.top;
@@ -41,20 +40,12 @@ function pairOfSquadParts(current, second) {
     MyGame.fight = true;
     console.log('бой')
     pairsOfUnits(current, second)
-    // for (let unit1 of current.units) {
-    //   unit1.health -= Math.floor(Math.random() * 13) + 1;
-    //   if (unit1.health < 0) unit1.health = 0;
-    // }
-    //
-    // for (let unit2 of second.units) {
-    //   unit2.health -= Math.floor(Math.random() * 13) + 1;
-    //   if (unit2.health < 0) unit2.health = 0;
-    // }
   }
 }
 
+
+// определяем подотряды и способ их столкновения
 function pairsOfUnits(current, second) {
-  // определяем подотряды
   let leftBorder = null;
   let rightBorder = null;
   let leftSquad = null;
@@ -73,10 +64,10 @@ function pairsOfUnits(current, second) {
 
   if (diffEnd > 0) {
     rightBorder = current.left + current.width
-    rightSquad = second.left + second.width;
+    rightSquad = second.left + second.width + 16;
   } else {
     // diffEnd = -diffEnd;
-    rightSquad = current.left + current.width;
+    rightSquad = current.left + current.width + 16;
   }
 
   // Счётчик пар
@@ -86,13 +77,13 @@ function pairsOfUnits(current, second) {
   let startCurrentPos = (leftBorder - current.left + diffStart) / 32;
   if (startCurrentPos < 0 ) startCurrentPos = -startCurrentPos;
 
-  let endCurrentPos = startCurrentPos + ((rightSquad - leftSquad) / 32);
+  let endCurrentPos =  Math.trunc(startCurrentPos + ((rightSquad - leftSquad) / 32));
   if (endCurrentPos < 0 ) endCurrentPos = -endCurrentPos;
 
   let startSecondPos = (leftBorder - second.left + diffStart) / 32;
   if (startSecondPos < 0 ) startSecondPos = -startSecondPos;
 
-  let endSecondPos = startSecondPos + ((rightSquad - leftSquad) / 32);
+  let endSecondPos = Math.trunc(startSecondPos + ((rightSquad - leftSquad) / 32));
   if (endSecondPos < 0 ) endSecondPos = -endSecondPos;
 
 
@@ -106,11 +97,23 @@ function pairsOfUnits(current, second) {
   // console.log('количество пар -', countOfPairs)
 
   for (let i = 0; i < countOfPairs; i++) {
-    console.log(curUnits[i], secUnits[i])
+    console.log([curUnits[i]?.name, secUnits[i]?.name])
 
-    if (curUnits[i]) curUnits[i].health -= 10;
+    if ((curUnits[i] !== undefined) && (secUnits[i] !== undefined) ) {
+      curUnits[i].health -= 10
+      secUnits[i].health -= 10
+    };
+
+    // if (curUnits[i] === undefined) {
+    //   curUnits[i - 1].health -= 10
+    // }
+    //
+    // if (secUnits[i] === undefined) {
+    //   secUnits[i - 1].health -= 10
+    // }
+
+
     if (curUnits[i]?.health < 0) curUnits[i].health = 0;
-    if (secUnits[i]) secUnits[i].health -= 10;
     if (secUnits[i]?.health < 0) secUnits[i].health = 0;
   }
 
