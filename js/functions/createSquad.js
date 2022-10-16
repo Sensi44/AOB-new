@@ -17,7 +17,7 @@ export function createSquad(name, sizeX, sizeY, MyGame, squads, curPlayer) {
       MyGame.left += squads[squad].width + 64;
 
       if (squads[squad].squadId === 100) {
-        MyGame.left = 400;
+        MyGame.left = 450;
         MyGame.top += squads[squad].height + 16;
       };
 

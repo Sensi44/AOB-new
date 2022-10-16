@@ -1,8 +1,9 @@
 import { throttle } from "./throt-deboun.js";
 import { MyGame, squads } from "../main.js";
+import { displacementOfTheDead } from "./displacementOfTheDead.js";
 
 function fight() {}
-fight = throttle(pairsOfSquads, 1000)
+fight = throttle(pairsOfSquads, 100)
 
 //▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Fight ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 // Составление пар отрядов для проверки их по функции столкновения (checkCollision)
@@ -46,6 +47,8 @@ function checkingCollisionConditions(current, second) {
 
 // определяем подотряды и способ их столкновения
 function getPairsOfUnits(current, second) {
+  // displacementOfTheDead(current)
+  // displacementOfTheDead(second)
   let leftBorder = null;
   let leftSquad = null;
   let rightSquad = null;

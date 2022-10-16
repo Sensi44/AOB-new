@@ -32,27 +32,15 @@ new OtherListeners(canvas); // общее
 engine(q, m, MyGame, squads, width, height, width2, height2);
 
 // Временное ручное создание начальных отрядов
-createSquad('reds', 5, 2, MyGame, squads, 1)
-addUnit(MyGame.curSquadInfo, MyGame, hoplite);
-addUnit(MyGame.curSquadInfo, MyGame, hoplite);
-addUnit(MyGame.curSquadInfo, MyGame, hoplite);
-addUnit(MyGame.curSquadInfo, MyGame, hoplite);
-addUnit(MyGame.curSquadInfo, MyGame, hoplite);
-addUnit(MyGame.curSquadInfo, MyGame, hoplite);
-addUnit(MyGame.curSquadInfo, MyGame, hoplite);
-addUnit(MyGame.curSquadInfo, MyGame, hoplite);
-addUnit(MyGame.curSquadInfo, MyGame, hoplite);
-addUnit(MyGame.curSquadInfo, MyGame, hoplite);
+createSquad('reds', 15, 4, MyGame, squads, 1)
+// addUnitAll(MyGame)
+// addUnit(MyGame.curSquadInfo, MyGame, hoplite);
+
 // addUnit(MyGame.curSquadInfo, MyGame, '6 - red');
-createSquad('blues', 4, 2, MyGame, squads, 2)
-addUnit(MyGame.curSquadInfo, MyGame, eliteHoplite);
-addUnit(MyGame.curSquadInfo, MyGame, eliteHoplite);
-addUnit(MyGame.curSquadInfo, MyGame, eliteHoplite);
-addUnit(MyGame.curSquadInfo, MyGame, eliteHoplite);
-addUnit(MyGame.curSquadInfo, MyGame, eliteHoplite);
-addUnit(MyGame.curSquadInfo, MyGame, eliteHoplite);
-addUnit(MyGame.curSquadInfo, MyGame, eliteHoplite);
-addUnit(MyGame.curSquadInfo, MyGame, eliteHoplite);
+createSquad('blues', 15, 4, MyGame, squads, 2)
+// addUnitAll(MyGame)
+// addUnit(MyGame.curSquadInfo, MyGame, eliteHoplite);
+
 // addUnit(MyGame.curSquadInfo, MyGame, '5 - blue');
 // addUnit(MyGame.curSquadInfo, MyGame, '6 - blue');
 
