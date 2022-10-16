@@ -3,7 +3,7 @@ import { MyGame, squads } from "../main.js";
 import { displacementOfTheDead } from "./displacementOfTheDead.js";
 
 function fight() {}
-fight = throttle(pairsOfSquads, 100)
+fight = throttle(pairsOfSquads, 800)
 
 //▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Fight ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 // Составление пар отрядов для проверки их по функции столкновения (checkCollision)

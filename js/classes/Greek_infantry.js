@@ -2,12 +2,12 @@
 export let hoplite = {
   name: 'hoplite',
   size: 1,
-  health: 100,
+  health: 80,
   sizeX: 1,
   sizeY: 1,
   attack: 15,
   defense: 7,
-  hitChance: 95,
+  hitChance: 92,
   cost: 6,
   speed: 4,
 }

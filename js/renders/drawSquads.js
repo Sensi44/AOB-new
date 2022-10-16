@@ -10,7 +10,7 @@ export function drawSquads(q, MyGame, squads) {
       if (MyGame.curSquadInfo === cur) {
         q.lineWidth = 1.65
         q.strokeStyle = "rgba(255,11,11, 0.75)";
-        q.strokeRect(cur.left - 2, cur.top - 2, cur.width + 3, cur.height + 3);
+        q.strokeRect(cur.left - 1, cur.top - 1, cur.width + 3, cur.height + 3);
         q.strokeStyle = "black";
         q.lineWidth = 2
       }
@@ -18,7 +18,7 @@ export function drawSquads(q, MyGame, squads) {
 
       if (squads[squad].player === 1) {
         // Основная рамка и фон
-        q.fillStyle = "rgba(255,77,77,0.14)"
+        q.fillStyle = "rgba(215,77,77,0.04)"
         q.fillRect(cur.left, cur.top, cur.width, cur.height);
         q.strokeRect(cur.left, cur.top, cur.width, cur.height);
 
@@ -76,7 +76,7 @@ export function drawSquads(q, MyGame, squads) {
 
       if (squads[squad].player === 2) {
         // Основная рамка и фон
-        q.fillStyle = "rgba(77,77,255,0.14)"
+        q.fillStyle = "rgba(77,77,215,0.04)"
         q.fillRect(cur.left, cur.top, cur.width, cur.height);
         q.strokeRect(cur.left, cur.top, cur.width, cur.height);
 
