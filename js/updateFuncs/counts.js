@@ -39,7 +39,7 @@ export function unitsDeaths() {
 
 
         // Функция смещения умирающих юнитов в отряде
-        displacementOfTheDead(squads[squad]);
+        // displacementOfTheDead(squads[squad]);
 
       }
     }
@@ -49,8 +49,8 @@ export function unitsDeaths() {
 
 
 // Функция смещения умирающих юнитов в отряде
-function displacementOfTheDead(squad) {
-  if ( squad.player === 1) {
+export function displacementOfTheDead(squad, position) {
+  if ( position === 'top') {
     for (let i = squad.row; i >= 0; i--) {
       let count = 0;
       let tempUnits = squad.units.slice(squad.sizeX * i, squad.sizeX * (i + 1));
@@ -75,7 +75,7 @@ function displacementOfTheDead(squad) {
 
 
 
-  if ( squad.player === 2) {
+  if ( position === 'bottom') {
     for (let i = 0; i <= squad.row; i++) {
       let count = 0;
       let tempUnits = squad.units.slice(squad.sizeX * i, squad.sizeX * (i + 1));

@@ -53,11 +53,11 @@ export function drawSquads(q, MyGame, squads) {
         q.strokeRect(cur.left - 16, cur.top, 16, 16);
         q.fillStyle = "black"
         if (cur.count - cur.deads < 10) {
-          q.font = "14px arial";
+          q.font = "13px arial";
           q.fillText(`${(cur.count - cur.deads) || 0}`, cur.left - 11, cur.top + 12.5);
         } else {
-          q.font = "12px arial";
-          q.fillText(`${(cur.count - cur.deads) || 0}`, cur.left -15, cur.top + 11.6);
+          q.font = "11px arial";
+          q.fillText(`${(cur.count - cur.deads) || 0}`, cur.left -14, cur.top + 11.6);
         }
 
         // Номер бинда отряда
@@ -111,13 +111,13 @@ export function drawSquads(q, MyGame, squads) {
         q.strokeRect(cur.left + cur.width + 1, cur.top + cur.height - 32, 16, 16);
         q.fillStyle = "black"
         if (cur.count - cur.deads < 10) {
-          q.font = "14px arial";
+          q.font = "13px arial";
           q.fillText(`${(cur.count - cur.deads) || 0}`,
             cur.left + cur.width + 5, cur.top + cur.height - 19.4);
         } else {
-          q.font = "12px arial";
+          q.font = "11px arial";
           q.fillText(`${(cur.count - cur.deads) || 0}`,
-            cur.left + cur.width + 2, cur.top + cur.height - 19.4);
+            cur.left + cur.width + 3, cur.top + cur.height - 20);
         }
 
         // Номер бинда отряда

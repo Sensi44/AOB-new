@@ -3,7 +3,7 @@ import { MyGame, squads } from "../main.js";
 import { displacementOfTheDead } from "./displacementOfTheDead.js";
 
 function fight() {}
-fight = throttle(pairsOfSquads, 800)
+fight = throttle(pairsOfSquads, 600)
 
 //▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Fight ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 // Составление пар отрядов для проверки их по функции столкновения (checkCollision)
@@ -40,6 +40,7 @@ function checkingCollisionConditions(current, second) {
   if (currentTop === secondBottom) {
     MyGame.fight = true;
     console.log('бой')
+    console.log(current, second)
     getPairsOfUnits(current, second)
   }
 }
@@ -99,6 +100,10 @@ function getPairsOfUnits(current, second) {
 
   // весь дальнейший код необходимо вынести в следующую функцию, описывающую бой для каждой пары.
   for (let i = 0; i < countOfPairs; i++) {
+    displacementOfTheDead(current, 'bottom');
+    displacementOfTheDead(second, 'top');
+
+
     console.log([curUnits[i]?.name, secUnits[i]?.name])
     if ((curUnits[i]) && (secUnits[i]) ) {
       curUnits[i].health -= (hit(secUnits[i].hitChance))
