@@ -78,7 +78,7 @@ function getPairsOfUnits(current, second) {
   // Определение пар на основе подотрядов
   let startCurrentPos = (leftBorder - current.left + diffStart) / 32;
   if (startCurrentPos < 0 ) startCurrentPos = -startCurrentPos;
-  let endCurrentPos =  Math.trunc(startCurrentPos + ((rightSquad - leftSquad) / 32));
+  let endCurrentPos =  Math.floor(startCurrentPos + ((rightSquad - leftSquad) / 32));
   if (endCurrentPos < 0 ) endCurrentPos = -endCurrentPos;
   let startSecondPos = (leftBorder - second.left + diffStart) / 32;
   if (startSecondPos < 0 ) startSecondPos = -startSecondPos;

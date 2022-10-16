@@ -63,9 +63,6 @@ export function drawUnits(q, MyGame, squads, goplit, eliteHoplit, eliteHoplit2) 
 
           // Полоски хп
           let health = unit.health * coefficient;
-          if (unit.id === 19) {
-            console.log(health)
-          }
           if (health >= 67) {
             q.fillStyle = "#00C100";
             q.fillRect(unit.left + 1, unit.top + 27, unit.health * coefficient / 3.2, 1);
