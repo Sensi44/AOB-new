@@ -8,6 +8,7 @@ import { SquadListeners } from "./listeners/squadListeners.js";
 import { OtherListeners } from "./listeners/otherListeners.js";
 import { frameCount } from "./engine/fps.js";
 import { hoplite, eliteHoplite} from "./classes/Greek_infantry.js";
+import { Mountains } from "./classes/mountains.js";
 
 //▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Основной модуль игры ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 
@@ -28,22 +29,35 @@ export let squads = initialSquads;
 new SquadListeners(canvas); // отряды
 new OtherListeners(canvas); // общее
 
+// Генерация ландшафта
+// Генерация гор
+let rocks = new Mountains();
+rocks.generate(width, height);
+rocks.generate(width, height);
+rocks.generate(width, height);
+console.log(rocks.allRocks)
+
 // Запуск цикла игры
-engine(q, m, MyGame, squads, width, height, width2, height2);
+engine(q, m, MyGame, squads, width, height, width2, height2, rocks.allRocks);
+
 
 // Временное ручное создание начальных отрядов
-createSquad('reds', 5, 4, MyGame, squads, 1)
-addUnitAll(MyGame)
+// createSquad('reds', 5, 4, MyGame, squads, 1)
+// addUnitAll(MyGame)
+//
+// createSquad('blues', 5, 4, MyGame, squads, 2)
+// addUnitAll(MyGame)
+
+
+
 // addUnit(MyGame.curSquadInfo, MyGame, hoplite);
 
 // addUnit(MyGame.curSquadInfo, MyGame, '6 - red');
-createSquad('blues', 5, 4, MyGame, squads, 2)
-addUnitAll(MyGame)
-// addUnit(MyGame.curSquadInfo, MyGame, eliteHoplite);
 
+
+// addUnit(MyGame.curSquadInfo, MyGame, eliteHoplite);
 // addUnit(MyGame.curSquadInfo, MyGame, '5 - blue');
 // addUnit(MyGame.curSquadInfo, MyGame, '6 - blue');
-
 // addUnitAll(MyGame)
 // createSquad('Victrix2', 6, 4, MyGame, squads)
 // addUnit(MyGame.curSquadInfo, MyGame);
