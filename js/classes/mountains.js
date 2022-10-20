@@ -6,7 +6,6 @@ export class Mountains {
 
   generate(width, height) { // Генерация новой горы
     width = 960
-    console.log(width)
     let firstPoint = [Math.floor(Math.random() * width), Math.floor(Math.random() * (height / 2))];
     let leftoverWidth = firstPoint[0] % 32;
     let leftoverHeight = firstPoint[1] % 32;
@@ -72,7 +71,7 @@ export class Mountains {
         }
 
       })
-      generateChance -= 12;
+      generateChance -= 25;
     }
 
     this.allRocks.push(this.rocks);

@@ -33,9 +33,6 @@ new OtherListeners(canvas); // общее
 // Генерация гор
 let rocks = new Mountains();
 rocks.generate(width, height);
-rocks.generate(width, height);
-rocks.generate(width, height);
-console.log(rocks.allRocks)
 
 // Запуск цикла игры
 engine(q, m, MyGame, squads, width, height, width2, height2, rocks.allRocks);
