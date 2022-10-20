@@ -11,6 +11,7 @@ import { hoplite, eliteHoplite} from "./classes/Greek_infantry.js";
 import { Mountains } from "./classes/mountains.js";
 
 //▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Основной модуль игры ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+console.log('123')
 
 // Инициализация канваса поля и миникарты
 export let canvas = document.getElementById("canvas");
