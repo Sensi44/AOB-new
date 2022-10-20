@@ -1,7 +1,5 @@
 //▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Лисенеры отряда ▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 import { glueToField } from "../updateFuncs/glueToField.js";
-import { Squad } from "../classes/squad.js";
-import { q, squads, MyGame } from '../main.js';
 
 // ▬ ▬ ▬ ▬ ▬
 // 1. Выбор текущего отряда

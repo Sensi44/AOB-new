@@ -1,9 +1,10 @@
 //▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Импорты ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-import { initialState, initialSquads } from "./classes/initState.js";
+import { initialState, initialSquads, initialUnits } from "./classes/initState.js";
 import { engine} from "./engine/mainCycle.js";
 import { createSquad } from "./functions/createSquad.js";
 import { addUnit } from "./functions/addUnit.js";
 import { addUnitAll } from "./functions/AddUnitAll.js";
+import { addExUnit } from "./functions/addExUnit.js";
 import { SquadListeners } from "./listeners/squadListeners.js";
 import { OtherListeners } from "./listeners/otherListeners.js";
 import { frameCount } from "./engine/fps.js";
@@ -24,21 +25,22 @@ let width2 = miniMap.width, height2 = miniMap.height;
 // Инициализация состояния игры
 export let MyGame = initialState;
 export let squads = initialSquads;
+export let unitsArr = initialUnits;
 
 // Инициализация лисинеров
 new SquadListeners(canvas); // отряды
 new OtherListeners(canvas); // общее
 
-// Генерация ландшафта
-// Генерация гор
-let rocks = new Mountains();
-rocks.generate(width, height);
-
 // Запуск цикла игры
-engine(q, m, MyGame, squads, width, height, width2, height2, rocks.allRocks);
+engine(q, m, MyGame, squads, width, height, width2, height2, unitsArr);
 
 
 // Временное ручное создание начальных отрядов
+addExUnit('Jonathan', MyGame.exUnitId, MyGame);
+addExUnit('Jonathan', MyGame.exUnitId, MyGame);
+addExUnit('Jonathan', MyGame.exUnitId, MyGame);
+addExUnit('Jonathan', MyGame.exUnitId, MyGame);
+console.log(unitsArr)
 // createSquad('reds', 5, 4, MyGame, squads, 1)
 // addUnitAll(MyGame)
 //

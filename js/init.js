@@ -15,7 +15,8 @@ let inputSquad3 = document.querySelector('.squadInput3');
 
 import {MyGame} from "./main.js";
 import {squads} from "./main.js";
-
+import {unitsArr} from "./main.js";
+window.unitsArr = unitsArr;
 
 window.addUnit = addUnit;
 window.addUnitAll = addUnitAll;

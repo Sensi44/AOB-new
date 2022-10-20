@@ -9,6 +9,7 @@ export let initialState = {
     phase: true,   // фаза игры подготовка или игра(preparation / game)
     countUnitId: 0,         // текущий ID юнитов
     squadId: 100,           // текущий ID отрядов
+    exUnitId: 100,
     left: 450,              // для авт. подбора положения создания нового отряда
     top: 320,               // для авт. подбора положения создания нового отряда
     moveLeft: 0,            // для перетаскивания, временные координаты
@@ -25,6 +26,8 @@ export let initialState = {
     }
 }
 
+export let initialUnits = [null, null, null];
+
 //▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Отряды ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 
 export let initialSquads = {
@@ -33,3 +36,5 @@ export let initialSquads = {
   squad7:  {state: 0},    squad8:  {state: 0},    squad9:  {state: 0},
   squad10: {state: 0},    squad11: {state: 0},    squad12: {state: 0},
 }
+
+
