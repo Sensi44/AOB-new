@@ -1,36 +1,37 @@
 //▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Лисенеры отряда ▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 import { glueToField } from "../updateFuncs/glueToField.js";
+import { q } from '../main.js';
 
-// ▬ ▬ ▬ ▬ ▬
-// 1. Выбор текущего отряда
-// 2. Выбор места для создания отряда
-// 3. Перетаскивание отряда
-// 4. Кнопка удаления отряда
-// 5. Инфо об отряде
-// 6. Выключить инфо
+// ▬ ▬ ▬ ▬ ▬  Переделано на моба + -
+// 1. Выбор текущего отряда               +++
+// 2. Выбор места для создания отряда     +++
+// 3. Перетаскивание отряда               +++
+// 4. Кнопка удаления отряда              +++
+// 5. Инфо об отряде                      +++
+// 6. Выключить инфо                      +++
 // 7. Клик по юниту
 // 8. Кнопка поворота отряда
 
 function moveS(e) {
-  let cur = MyGame.curSquadInfo;
+  let cur = MyGame.curExUnit;
   cur.left = e.offsetX - MyGame.moveLeft; // вычитаем значение полученное ранее
   cur.top = e.offsetY - MyGame.moveTop;   // для правильного местоположения
 }
 
-export class SquadListeners {
+export class UnitListeners {
   constructor(canvas) {
 
 // 1. ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Выбор текущего отряда ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
     canvas.addEventListener('click', (e) => {
-      for (let squad in squads) {
+      for (let unit of unitsArr) {
         if (
-          ((e.offsetX >= squads[squad].left) && (e.offsetX <= squads[squad].left + squads[squad].width)) &&
-          ((e.offsetY >= squads[squad].top) && (e.offsetY < squads[squad].top + squads[squad].height) )
+          ((e.offsetX >= unit.left) && (e.offsetX <= unit.left + unit.width)) &&
+          ((e.offsetY >= unit.top) && (e.offsetY < unit.top + unit.height) )
         ) {
-          MyGame.curSquadInfo = squads[squad];
+          MyGame.curExUnit = unit;
         }
       }
-      console.log(MyGame.curSquadInfo);
+      console.log(MyGame.curExUnit);
     }, false);
 
 
@@ -50,14 +51,14 @@ export class SquadListeners {
       MyGame.moveLeft = e.offsetX;
       MyGame.moveTop = e.offsetY;
 
-      for (let squad in squads) {
-        let cur = squads[squad];
+      for (let unit of unitsArr) {
+        let cur = unit;
         if (((e.offsetY >= cur.top - 20 && e.offsetY <= cur.top + 20) &&
           (e.offsetX >= cur.left && e.offsetX <= cur.left + (cur.width / 2)))
           ||
           ((e.offsetX >= cur.left && e.offsetX <= (cur.left + cur.width)) &&
             (e.offsetY >= cur.top && e.offsetY <= (cur.top + cur.height)))) {
-          MyGame.curSquadInfo = squads[squad];
+          MyGame.curExUnit = unit;
 
           // смещаем их на расстояние от 0 до левого края отряда
           MyGame.moveLeft -= cur.left;
@@ -76,7 +77,7 @@ export class SquadListeners {
 
 // 4. ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Кнопка удаления отряда ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
     let curSq = document.querySelector('.deletesquad');
-    curSq.addEventListener('click', () => Squad.deleteSquad(MyGame, squads));
+    curSq.addEventListener('click', () => Unit.deleteUnit(MyGame, unitsArr));
 
 
 // 5. ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Инфо об отряде ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
@@ -87,34 +88,35 @@ export class SquadListeners {
 
       if (e.button === 2) {
         q.strokeRect(20, 20, 100, 100);
-        for (let squad in squads) {
+        for (let unit of unitsArr) {
           // Инфо об отряде
-          if ((e.offsetY >= squads[squad].top && e.offsetY <= squads[squad].top + squads[squad].height)
-            && (e.offsetX >= squads[squad].left && e.offsetX <= squads[squad].left + squads[squad].width)) {
+          if ((e.offsetY >= unit.top && e.offsetY <= unit.top + unit.height)
+            && (e.offsetX >= unit.left && e.offsetX <= unit.left + unit.width)) {
 
             // Убирает отображение инфо при переключении на другой отряд
-            if (MyGame.curSquadInfo !== squads[squad]) {
-              MyGame.curSquadInfo = squads[squad];
+            if (MyGame.curExUnit !== unit) {
+              MyGame.curExUnit = unit;
               return;
             }
 
             if (!MyGame.showSquadInfo) {
               MyGame.showSquadInfo = 1;
             }
-            MyGame.curSquadInfo = squads[squad];
+            MyGame.curExUnit = unit;
           }
 
           // Добавление кликнутого юнита в инфо
-          if (squads[squad].state === 1) {
-            for (let unit of squads[squad].units) {
+          if (unit.name) {
+            for (let unit of unitsArr) {
               if (unit !== null && unit !== undefined) {
-                if ((e.offsetY >= unit.top && e.offsetY <= unit.top + 30) &&
-                  (e.offsetX >= unit.left && e.offsetX <= unit.left + 30)) {
+                if ((e.offsetY >= unit.top && e.offsetY <= unit.top + 94) &&
+                  (e.offsetX >= unit.left && e.offsetX <= unit.left + 94)) {
                   MyGame.curUnitInfo = unit;
                 }
               }
             }
           }
+
         }
       }
     });

@@ -1,11 +1,16 @@
 export class Unit {
-  left = 0;
-  top = 0;
+  // Общие вещи не нужные в конструкторе
+  keyBind = '';
+  previosTop = 0;
+  previosLeft = 0;
+  headFlag = 'top';
+  width = 96;
+  height = 96;
 
   constructor(name,
               id = 0,
               MyGame,
-              {unitClass, health, attack, defense, hitChance, speed}
+              {unitClass, health, attack, defense, hitChance, speed, distance, radius}
   ) {
     // Имя, айдишник и принадлежность к отряду
     this.name = `${name}-${id + 1}`;
@@ -16,6 +21,7 @@ export class Unit {
     this.left = MyGame.left;
     this.top = MyGame.top;
 
+
     // Боевые характеристики
     this.unitClass = unitClass;
     this.health = health;
@@ -23,8 +29,39 @@ export class Unit {
     this.defense = defense;
     this.hitChance = hitChance;
     this.speed = speed;
+    this.distance = distance;
+    this.radius = radius;
 
     // Состояние жив/мёртв
     this.dead = false;
   }
+
+  static deleteUnit(MyGame, unitsArr) {
+    console.log('delete')
+
+    unitsArr.forEach((unit, index) => {
+      if (unit.id === MyGame.curExUnit.id) {
+        unitsArr.splice(index, 1);
+      }
+    })
+  }
+
+  moveTop() {
+    this.top -= 32;
+    this.previosTop = this.top + 32
+  }
+  moveDown() {
+    this.top += 32;
+    this.previosTop = this.top - 32
+  }
+  moveLeft() {
+    this.left -= 32;
+    this.previosLeft = this.left + 32
+  }
+  moveRight() {
+    this.left += 32;
+    this.previosLeft = this.left - 32
+  }
+
+
 }

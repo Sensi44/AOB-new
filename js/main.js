@@ -3,10 +3,10 @@ import { initialState, initialSquads, initialUnits } from "./classes/initState.j
 import { engine} from "./engine/mainCycle.js";
 import { createSquad } from "./functions/createSquad.js";
 import { addUnit } from "./functions/addUnit.js";
-import { SquadListeners } from "./listeners/squadListeners.js";
+import { UnitListeners } from "./listeners/unitListeners.js";
 import { OtherListeners } from "./listeners/otherListeners.js";
 import { frameCount } from "./engine/fps.js";
-import { warrior } from "./classes/unitBuilds.js";
+import { warrior, ranger } from "./classes/unitBuilds.js";
 
 //▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Основной модуль игры ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 console.log('moba')
@@ -27,7 +27,7 @@ export let unitsArr = initialUnits;
 
 
 // Инициализация лисинеров
-new SquadListeners(canvas); // отряды
+new UnitListeners(canvas); // отряды
 new OtherListeners(canvas); // общее
 
 
@@ -37,7 +37,7 @@ engine(q, m, MyGame, unitsArr, width, height, width2, height2);
 
 // Временное ручное создание начальных отрядов
 addUnit('Jonathan', unitsArr, MyGame, warrior);
-addUnit('Ronal', unitsArr, MyGame, warrior);
+addUnit('Ronal', unitsArr, MyGame, ranger);
 console.log(unitsArr)
 
 

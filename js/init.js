@@ -5,7 +5,8 @@ import { hurtUnit } from "./functions/hurtUnit.js";
 import { createSquad } from "./functions/createSquad.js";
 import { startEngine, stopEngine, changePhase } from "./engine/controls.js";
 import { Squad } from "./classes/squad.js";
-import { warrior } from "./classes/unitBuilds.js";
+import { Unit } from "./classes/Unit.js";
+import { warrior, ranger } from "./classes/unitBuilds.js";
 import {MyGame} from "./main.js";
 import {squads} from "./main.js";
 import {unitsArr} from "./main.js";
@@ -17,7 +18,9 @@ let inputSquad3 = document.querySelector('.squadInput3');
 
 window.unitsArr = unitsArr;
 window.warrior = warrior;
+window.ranger = ranger;
 
+window.Unit = Unit;
 window.addUnit = addUnit;
 window.deleteUnit = deleteUnit;
 window.killUnit = killUnit;

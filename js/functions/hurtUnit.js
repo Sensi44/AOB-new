@@ -1,5 +1,5 @@
 export function hurtUnit(MyGame) {
-  if (MyGame.curUnitInfo.health <= 0 ) return
-  MyGame.curUnitInfo.health -= 10
-  if (MyGame.curUnitInfo.health <= 0) MyGame.curUnitInfo.health = 0;
+  if (MyGame.curExUnit.health <= 0 ) return
+  MyGame.curExUnit.health -= 10
+  if (MyGame.curExUnit.health <= 0) MyGame.curExUnit.health = 0;
 }

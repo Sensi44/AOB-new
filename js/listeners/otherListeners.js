@@ -1,6 +1,7 @@
 //▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Лисенеры разные общие ▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 import {canvas} from "../main.js";
 
+// всё переделано на моба
 // ▬ ▬ ▬ ▬ ▬
 // 1. Координаты клика
 // 2. ВПереключение игрока
@@ -28,7 +29,7 @@ export class OtherListeners {
         MyGame.curPlayer = 1;
       }
 
-      console.log(MyGame.curPlayer);
+      console.log('текущий игрок - ', MyGame.curPlayer);
     })
 
 
@@ -38,15 +39,15 @@ export class OtherListeners {
       for (let digit of arr) {
         if (e.ctrlKey && e.code === `Digit${digit}`) {
           e.preventDefault();
-          MyGame.curSquadInfo.keyBind = `Digit${digit}`;
+          MyGame.curExUnit.keyBind = `Digit${digit}`;
           console.log(e.code)
         }
       }
 
-      for (let squad in squads) {
-        if (squads[squad].state === 1 && squads[squad].keyBind === e.code) {
-          MyGame.curSquadInfo = squads[squad];
-          console.log(e.code)
+      for (let unit of unitsArr) {
+        if (unit.name && unit.keyBind === e.code) {
+          MyGame.curExUnit = unit;
+          console.log(e)
         }
       }
     })
@@ -54,7 +55,7 @@ export class OtherListeners {
 
 // 4. ▬▬▬▬▬▬▬▬▬▬▬▬▬ Передвижение по кнопкам ▬▬▬▬▬▬▬▬▬▬▬▬▬▬
     document.body.addEventListener("keydown", (e) => {
-      let cur = MyGame.curSquadInfo;
+      let cur = MyGame.curExUnit;
       if (e.key === 'ArrowUp') cur.moveTop()
       if (e.key === 'ArrowDown') cur.moveDown()
       if (e.key === 'ArrowLeft') cur.moveLeft()

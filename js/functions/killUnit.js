@@ -1,5 +1,5 @@
 export function killUnit(MyGame) {
-  MyGame.curUnitInfo.health = 0;
+  MyGame.curExUnit.health = 0;
 }
 
 

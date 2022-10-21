@@ -1,7 +1,7 @@
 //▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Рисуем инфо при клике ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 
-export function drawSquadInfo(q, MyGame, squads) {
-  let cur = MyGame.curSquadInfo;
+export function drawUnitInfo(q, MyGame, ) {
+  let cur = MyGame.curUnitInfo;
   // Сам квадрат
   q.fillStyle = "rgb(155,55,55)";
   q.fillRect(cur.left + cur.width + 10, cur.top - 10, 215, 200);
@@ -13,8 +13,6 @@ export function drawSquadInfo(q, MyGame, squads) {
   q.font = "18.5px Arial"
   q.fillText(`${cur.name}`, cur.left + cur.width + 105, cur.top + 12)
   q.font = "13.5px Arial"
-  q.fillText(`id - ${cur.squadId}`, cur.left + cur.width + 30, cur.top + 34)
-  q.fillText(`юнитов - ${cur.units.length}`, cur.left + cur.width + 30, cur.top + 56)
 
   q.lineWidth = 1;                                                              // Толщина линии
   q.beginPath();                                                                // Вызов метода рисования нового пути
