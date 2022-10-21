@@ -4,8 +4,8 @@ export function rotateSquad(MyGame, squad) {
   let current = Object.assign({}, squad);
   current.sizeX = sizeY;
   current.sizeY = sizeX;
-  current.width = current.sizeX  * 32;
-  current.height = current.sizeY  * 32;
+  current.width = current.sizeX * 32;
+  current.height = current.sizeY * 32;
 
   current.units = [].concat(MyGame.curSquadInfo.units)
   current.units.length = sizeX * sizeY;
