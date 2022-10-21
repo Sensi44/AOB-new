@@ -3,10 +3,9 @@ export let initialState = {
     name: 'AgeOfBattles',
     gameState: 1,
     start: () => {},
-    fight: true,
     fps: document.body.querySelector('.fps'),
     canStart: 0,
-    phase: true,   // фаза игры подготовка или игра(preparation / game)
+    phase: false,   // фаза игры подготовка или игра(preparation / game)
     countUnitId: 0,         // текущий ID юнитов
     squadId: 100,           // текущий ID отрядов
     exUnitId: 100,

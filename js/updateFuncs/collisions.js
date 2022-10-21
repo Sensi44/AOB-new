@@ -1,20 +1,20 @@
 import { throttle } from "./throt-deboun.js";
 import { width } from "../main.js";
 
-function collisions() {}
+export function collisions() {}
 collisions = throttle(checkCollisionAll, 96)
 
 
 //▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ checkCollisionAll ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 
 // Составление пар отрядов для проверки их по функции столкновения (checkCollision)
-function checkCollisionAll(squads, phase) {
-  for (let squad in squads) {
-    if (squads[squad].state === 1) {
-      let first = squads[squad];
-      for (let sq in squads) {
-        if (squads[sq].state === 1 && squads[sq] !== squads[squad]) {
-          let second = squads[sq];
+function checkCollisionAll(units, phase) {
+  for (let unit of units) {
+    if (unit.name) {
+      let first = unit;
+      for (let unit2 of units) {
+        if (unit2.name && unit.id !== unit2.id) {
+          let second = unit2;
           checkCollision(first, second, phase)
         }
       }
@@ -24,7 +24,7 @@ function checkCollisionAll(squads, phase) {
 
 //▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ checkCollision ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 
-function checkCollision(first, second = MyGame.curSquadInfo, phase) {
+function checkCollision(first, second = MyGame.curExUnit, phase) {
   let cur = first;
   let sec = second;
 
@@ -116,6 +116,7 @@ function checkCollision(first, second = MyGame.curSquadInfo, phase) {
     console.log(`Левый нижний`)
     if (phase) {
       cur.left = cur.previosLeft;
+      console.log(sec, sec.left)
       sec.left = sec.previosLeft;
       cur.top = cur.previosTop;
       sec.top = sec.previosTop;
@@ -234,5 +235,3 @@ function checkCollision(first, second = MyGame.curSquadInfo, phase) {
     cur.top += 16;
   }
 }
-
-export default collisions;

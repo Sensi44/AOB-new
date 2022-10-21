@@ -25,4 +25,5 @@ export function drawUnitInfo(q, MyGame, ) {
   q.fillText(`Здоровье - ${unit.health ?? 0}`, cur.left + cur.width + 10, cur.top + 110)
   q.fillText(`id - ${unit.id ?? 0}`, cur.left + cur.width + 10, cur.top + 134)
   q.fillText(`Player - ${MyGame.curPlayer}`, cur.left + cur.width + 10, cur.top + 158)
+  q.fillStyle = "rgb(0,0,0)";
 }

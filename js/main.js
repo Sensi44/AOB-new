@@ -27,8 +27,8 @@ export let unitsArr = initialUnits;
 
 
 // Инициализация лисинеров
-new UnitListeners(canvas); // отряды
-new OtherListeners(canvas); // общее
+new UnitListeners(canvas); // Юниты - обработчики событий
+new OtherListeners(canvas); // Разное общее - обработчики событий
 
 
 // Запуск цикла игры

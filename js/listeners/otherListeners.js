@@ -40,14 +40,12 @@ export class OtherListeners {
         if (e.ctrlKey && e.code === `Digit${digit}`) {
           e.preventDefault();
           MyGame.curExUnit.keyBind = `Digit${digit}`;
-          console.log(e.code)
         }
       }
 
       for (let unit of unitsArr) {
         if (unit.name && unit.keyBind === e.code) {
           MyGame.curExUnit = unit;
-          console.log(e)
         }
       }
     })

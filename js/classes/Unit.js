@@ -20,7 +20,8 @@ export class Unit {
     // Координаты
     this.left = MyGame.left;
     this.top = MyGame.top;
-
+    this.previosLeft = this.left;
+    this.previosTop = this.top;
 
     // Боевые характеристики
     this.unitClass = unitClass;

@@ -1,21 +1,21 @@
 //▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Столкновение со стенами ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 
-export function checkSides(MyGame, squads, width, height) {
-  let cur = MyGame.curSquadInfo;
+export function checkSides(MyGame, units, width, height) {
+  let cur = MyGame.curExUnit;
   if ((cur.left + cur.width) > width - 14)  cur.left -= 4;
   if ((cur.top + cur.height) > height - 14) cur.top -= 4;
-  if (cur.top <= 14)                    cur.top += 4;
-  if (cur.left <= 14)                   cur.left += 4;
+  if (cur.top <= 14)                        cur.top += 4;
+  if (cur.left <= 14)                       cur.left += 4;
 
-  for (let squad in squads) {
-    if (squads[squad].state === 1 && squads[squad] !== cur) {
-      if (squads[squad].left <= 0)           squads[squad].left = 16;
-      if (squads[squad].top <= 0)            squads[squad].top = 16;
-      if ((squads[squad].left + squads[squad].width) >= width) {
-        squads[squad].left = width - squads[squad].width - 16;
+  for (let unit of units) {
+    if (unit.name && unit.id !== cur.id) {
+      if (unit.left <= 0) unit.left = 16;
+      if (unit.top <= 0) unit.top = 16;
+      if ((unit.left + unit.width) >= width) {
+        unit.left = width - unit.width - 16;
       }
-      if ((squads[squad].top + squads[squad].height) >= height) {
-        squads[squad].top = height - squads[squad].height - 16;
+      if ((unit.top + unit.height) >= height) {
+        unit.top = height - unit.height - 16;
       }
     }
   }

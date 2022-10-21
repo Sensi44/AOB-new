@@ -9,8 +9,7 @@ import { q } from '../main.js';
 // 4. Кнопка удаления отряда              +++
 // 5. Инфо об отряде                      +++
 // 6. Выключить инфо                      +++
-// 7. Клик по юниту
-// 8. Кнопка поворота отряда
+// 7. Клик по юниту                       +++
 
 function moveS(e) {
   let cur = MyGame.curExUnit;
@@ -31,7 +30,6 @@ export class UnitListeners {
           MyGame.curExUnit = unit;
         }
       }
-      console.log(MyGame.curExUnit);
     }, false);
 
 
@@ -139,27 +137,29 @@ export class UnitListeners {
 // Показывает в консоли на какого парня кликнули
     canvas.addEventListener("click", e => {
       output.innerText = `Координаты клика: ${e.offsetX}, ${e.offsetY}. `;
-      for (let squad in squads) {
-        if (squads[squad].state === 1) {
-          for (let unit of squads[squad].units) {
-            if (unit !== null && unit !== undefined) {
-              if ( (e.offsetY >= unit.top && e.offsetY <= unit.top + 30) &&
-                (e.offsetX >= unit.left && e.offsetX <= unit.left + 30)) {
-                MyGame.curUnitInfo = unit;
-                console.log(`Name:${unit.name}, id:${unit.id}
-                     HP:${unit.health}, left:${unit.left}, top:${unit.top}
-                      row: ${unit.row + 1}, pos: ${unit.pos + 1}`)
+      for (let unit of unitsArr) {
+        if (unit) {
+              if ( (e.offsetY >= unit.top && e.offsetY <= unit.top + 94) &&
+                (e.offsetX >= unit.left && e.offsetX <= unit.left + 94)) {
+                // console.log(`Name:${unit.name}, id:${unit.id}
+                //      HP:${unit.health}, left:${unit.left}, top:${unit.top}`, unit)
               }
-            }
-          }
+
         }
       }
     });
 
-// 8. ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Кнопка поворота отряда ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-//     let rotatesquad = document.querySelector('.rotatesquad');
-//     rotatesquad.addEventListener('click', () => Squad.rotate(MyGame, squads));
+// 8. ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬  ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+//
+//
 
+// 9. ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬  ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+//
+//
+
+// 10. ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬  ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+//
+//
 
   }
 }
