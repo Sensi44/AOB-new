@@ -20,7 +20,7 @@ function init() {
 }
 init();
 
-export function render(q, m, MyGame, squads, width, height, width2, height2, units) {
+export function render(q, m, MyGame, units, width, height, width2, height2) {
   // console.log(units)
   // Очистка экрана
   q.clearRect(0, 0, width, height);
