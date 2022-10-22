@@ -22,6 +22,34 @@ export function drawExUnits(q, MyGame, units) {
         q.lineWidth = 2
       }
 
+      // Полоски хп
+      let coefficient = 1.05;
+      let health = (unit.health * coefficient).toFixed(2);
+      health = +health
+      if (health >= 67) {
+        q.fillStyle = "#00C100";
+        q.fillRect(unit.left + 1, unit.top + 89, health, 1);
+        q.fillStyle = "#008300";
+        q.fillRect(unit.left + 1, unit.top + 90, health, 4);
+        q.fillStyle = "#005900";
+        q.fillRect(unit.left + 1, unit.top + 94, health, 1);
+      } else if (health >= 33 && health <= 67) {
+        q.fillStyle = "#FFC300";
+        q.fillRect(unit.left + 1, unit.top + 89, health, 1);
+        q.fillStyle = "#FFC300";
+        q.fillRect(unit.left + 1, unit.top + 90, health, 4);
+        q.fillStyle = "#5A4400";
+        q.fillRect(unit.left + 1, unit.top + 94, health, 1);
+      } else if (health >= 0 && health <= 32) {
+        q.fillStyle = "#F12400";
+        q.fillRect(unit.left + 1, unit.top + 89, health, 1);
+        q.fillStyle = "#F12400";
+        q.fillRect(unit.left + 1, unit.top + 90, health, 4);
+        q.fillStyle = "#5A0D00";
+        q.fillRect(unit.left + 1, unit.top + 94, health, 1);
+      }
+
+
     }
   }
 }

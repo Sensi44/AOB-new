@@ -2,7 +2,7 @@
 
 export let warrior = {
   unitClass: 'Barbar',
-  health: 120,
+  health: 90,
   attack: 22,
   defense: 6,
   hitChance: 90,
@@ -13,7 +13,7 @@ export let warrior = {
 
 export let ranger = {
   unitClass: 'Ranger',
-  health: 120,
+  health: 90,
   attack: 22,
   defense: 6,
   hitChance: 90,
