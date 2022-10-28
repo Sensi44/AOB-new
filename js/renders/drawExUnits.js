@@ -11,7 +11,7 @@ export function drawExUnits(q, MyGame, units) {
       q.strokeRect(unit.left, unit.top, 96, 96);
       q.font = "13px Arial";
       q.fillText(`${unit.name}`, unit.left + 5, unit.top + 14);
-      q.fillText(`${unit.unitClass}`, unit.left + 5, unit.top + 25);
+      q.fillText(`${unit.unitClass}`, unit.left + 5, unit.top + 26);
 
       // Рамка красным если отряд выделен
       if (MyGame.curExUnit === unit) {

@@ -97,8 +97,8 @@ export class UnitListeners {
               return;
             }
 
-            if (!MyGame.showSquadInfo) {
-              MyGame.showSquadInfo = 1;
+            if (!MyGame.showUnitInfo) {
+              MyGame.showUnitInfo = 1;
             }
             MyGame.curExUnit = unit;
           }
@@ -128,7 +128,7 @@ export class UnitListeners {
 // 6.▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Выключить инфо ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 // Убирает инфо об отряде при отпускании мыши над элементом либо вне его
     canvas.addEventListener("click", e => {
-      MyGame.showSquadInfo = 0;
+      MyGame.showUnitInfo = 0;
       MyGame.curUnitInfo = '';
     })
 
